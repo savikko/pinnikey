@@ -1,7 +1,15 @@
-meteor-bones
+Pinnikey
 ============
 
-Barebones scaffolding for a Meteor 1.0 app. Includes preferred folder structure, customizable twitter bootstrap 3, font-awesome and basic packages like iron-router, coffeescript and less.
+This is Pinnikey. Skydiving management system built with Meteor.
+
+Components:
+
+* Logbook (partially done)
+* Dropzone list (partially done)
+* Manifesting (not done)
+* Gear management (not done)
+
 
 Dependencies
 ============
