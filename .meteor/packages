@@ -9,3 +9,14 @@ less
 email
 iron:router
 meteorhacks:fast-render
+ian:accounts-ui-bootstrap-3
+accounts-password
+accounts-facebook
+
+aldeed:autoform
+accounts-base
+aldeed:collection2
+sacha:spin
+mrt:flash-messages
+mrt:leaflet
+fortawesome:fontawesome

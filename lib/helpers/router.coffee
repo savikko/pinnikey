@@ -1,2 +1,2 @@
 Router.route "/", -> 
-	@render "helloworld"
+	@render "home"

@@ -1,0 +1,22 @@
+<template name="logBook">
+	<div class="page-header">
+	  <h1>Logbook <small>for skydivers</small></h1>
+	</div>
+	   <button class="btn btn-default btn-block btn-success" id="newJump">New jump</button>
+	<div class="row-fluid">
+		    {{#each jumps}}
+		    <div class="col-md-1 col-sm-6 col-xs-12">
+		    			<center><h2><small>Jump</small><br>{{jumpnumber}}</h2>{{prettifyDate dateofjump}}</center>
+		    </div>
+		    <div class="col-md-2 col-sm-6 col-xs-12">
+					    <i class="fa fa-cloud-download"></i> : {{altitude}} m<br>
+					    <i class="fa fa-cog"></i> : {{rig}}<br>
+					    <i class="fa fa-clock-o"></i> : {{freefallTime}} seconds of freefall<br>
+					    <i class="fa fa-dashboard"></i> : {{openingAltitude}} m<br>
+					    <i class="fa fa-plane"></i>: {{aircraft}}<br>
+					    <i class="fa fa-location-arrow"></i>: {{location}}<br>
+			</div>
+
+		    {{/each}}
+    </div>
+</template>

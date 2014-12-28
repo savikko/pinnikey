@@ -1,0 +1,72 @@
+#map { 
+  height: 400px;
+  border: solid 1px black;
+  margin: 10px;
+}
+
+.dropzonelist-item {
+  display:block;
+  align: center;
+  width: 30px;
+}
+
+.dropzonelist-img {
+    margin: 4px;
+}
+
+img {
+  display: inline-block;
+vertical-align: middle;
+}
+
+body {
+  background: #eee;
+  color: #666666; }
+
+.navbar {
+  margin-bottom: 10px; }
+  /* line 32, ../sass/style.scss */
+  .navbar .navbar-inner {
+    -webkit-border-radius: 0px 0px 3px 3px;
+    -moz-border-radius: 0px 0px 3px 3px;
+    -ms-border-radius: 0px 0px 3px 3px;
+    -o-border-radius: 0px 0px 3px 3px;
+    border-radius: 0px 0px 3px 3px; }
+
+#spinner {
+  height: 300px; }
+
+.jumbotron{
+  text-align: center;
+}
+
+.home{
+  background: #000;
+}
+
+.jumbotron h2{
+  font-size: 60px;
+  font-weight: 100;
+}
+
+.errors{
+  position: fixed;
+  z-index: 10000;
+  padding: 10px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  pointer-events: none;
+}
+
+.alert {
+          animation: fadeOut 2700ms ease-in 0s 1 forwards;
+  -webkit-animation: fadeOut 2700ms ease-in 0s 1 forwards;
+     -moz-animation: fadeOut 2700ms ease-in 0s 1 forwards;
+  width: 250px;
+  float: right;
+  clear: both;
+  margin-bottom: 5px;
+  pointer-events: auto;
+}

@@ -10,7 +10,6 @@
   <meta property="og:url" content=""/>
   <meta property="og:site_name" content=""/> -->
   <meta property="og:type" content="website"/>
-  
   <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -25,5 +24,21 @@
 </head>
 
 <template name="layout">
-  {{> yield}}
-</template>
+  <style type="text/css">
+  body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+  }
+  </style>
+  <body>
+    <div class="container">
+    {{> navbar}}
+    <div id="notifications" class="row-fluid">
+      {{> flashMessages}}
+    </div>
+    <div id="main" class="row-fluid">
+      {{> yield}}
+    </div>
+    </div>
+ </body>
+ </template>

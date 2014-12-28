@@ -1,0 +1,4 @@
+<template name="profileEdit">
+	Edit Profile for: {{user.emails.[0].address}}
+	{{> quickForm collection="Meteor.users" doc=this id="editUser" type="update"}}
+</template>

@@ -1,0 +1,11 @@
+<template name="dropzoneItem">
+  <div class="dropzone">
+    <div class="dropzone-content">
+      <h3><a href="{{url}}">{{name}}</a><span>{{airfield}}</span></h3>
+      <p>
+        Dropzone Info here.<br>   
+        {{#if ownDropzone}}<a href="{{pathFor 'postEdit'}}">Edit</a>{{/if}}
+      </p>
+    </div>
+  </div>
+</template>

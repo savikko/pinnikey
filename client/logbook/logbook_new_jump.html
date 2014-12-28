@@ -1,0 +1,26 @@
+<template name="logBookNewJump">
+	<div class="page-header">
+	  <h1>Logbook <small>for skydivers</small></h1>
+	</div>
+		{{> quickForm collection="Logbook" id="newJump" type="insert" omitFields="createdBy"}}
+	<div class="row-fluid">
+		    {{#each jump}}
+		    <div class="col-md-3 col-sm-6 col-xs-12">
+			    <ul class="media-list">
+					  <li class="media">
+					    <div class="media-body">
+					      <h4 class="media-heading"><a href="{{pathFor 'dropzonePage'}}">				      
+					    {{name}}</a></h4>
+					    <img src="/img/pinnikey_onlypin.png?n" alt="{{name}} logo" align=left width=50 class="dropzonelist-img">
+					      {{#if website}}<i class="fa fa-angle-double-right"></i> <a target=_new href={{website}}>Website</a><br>{{/if}}
+					      {{#if facebook}}<i class="fa fa-facebook-square"></i> <a target=_new href={{website}}>Facebook page</a><br>{{/if}}
+						  Operating at {{airfield}}.					
+						  <br>
+					      <i class="fa fa-edit"></i> <a href="{{pathFor 'editDropzone'}}">Edit dropzone</a>
+					    </div>
+					  </li>
+				</ul>
+			</div>
+		    {{/each}}
+    </div>
+</template>
