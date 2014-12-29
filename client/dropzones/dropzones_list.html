@@ -1,4 +1,7 @@
 <template name="dropzonesList">
+	<div class="page-header">
+	  <h1>Dropzones</h1>
+	</div>
 	<div class="row-fluid">
 		<div class="col-md-12">
 		 	<div id="map" class="map"></div>
@@ -6,21 +9,24 @@
 	</div>
 	<div class="row-fluid">
 		    {{#each dropzones}}
-		    <div class="col-md-3 col-sm-6 col-xs-12">
-			    <ul class="media-list">
-					  <li class="media">
-					    <div class="media-body">
-					      <h4 class="media-heading"><a href="{{pathFor 'dropzonePage'}}">				      
-					    {{name}}</a></h4>
-					    <img src="/img/pinnikey_onlypin.png?n" alt="{{name}} logo" align=left width=50 class="dropzonelist-img">
-					      {{#if website}}<i class="fa fa-angle-double-right"></i> <a target=_new href={{website}}>Website</a><br>{{/if}}
-					      {{#if facebook}}<i class="fa fa-facebook-square"></i> <a target=_new href={{website}}>Facebook page</a><br>{{/if}}
+		    <div class="col-md-4 col-sm-6 col-xs-12">
+		    	<div class="panel panel-default">
+				  <div class="panel-heading">
+				    <h3 class="panel-title"><a href="{{pathFor 'dropzonePage'}}">     
+					    {{name}}</a></h3>
+				  </div>
+				  <div class="panel-body">
+ 						<img src="/img/pinnikey_onlypin.png?n" alt="{{name}} logo" align=right width=50 class="dropzonelist-img">
+					     
+					    {{#if website}}<i class="fa fa-angle-double-right"></i> <a target=_new href={{website}}>Website</a><br>{{/if}}
+					    
+					    {{#if facebook}}<i class="fa fa-facebook-square"></i> <a target=_new href={{website}}>Facebook page</a><br>{{/if}}
 						  Operating at {{airfield}}.					
-						  <br>
-					      <i class="fa fa-edit"></i> <a href="{{pathFor 'editDropzone'}}">Edit dropzone</a>
-					    </div>
-					  </li>
-				</ul>
+						
+						<br>
+					    <i class="fa fa-edit"></i> <a href="{{pathFor 'editDropzone'}}">Edit dropzone</a>
+				  </div>
+				</div>
 			</div>
 		    {{/each}}
     </div>

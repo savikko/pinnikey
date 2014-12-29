@@ -1,10 +1,9 @@
 <template name="logBook">
 	<div class="page-header">
-	  <h1>Logbook <small>for skydivers</small></h1>
+	  <h1>Logbook</h1>
 	  <button class="btn btn-default btn-block btn-success" id="newJump">New jump</button>
 	</div>
-	   <br>
-	<div class="row">
+	<div class="row row-eq-height">
 		    {{#each jumps}}
 		    <div class="col-md-4 col-sm-6 col-xs-12">
 				<div class="panel panel-default">
@@ -17,6 +16,7 @@
 						    <i class="fa fa-dashboard"></i> : {{openingAltitude}} m<br>
 						    <i class="fa fa-cog"></i> : {{rig}} |   
 						    <i class="fa fa-plane"></i>: {{aircraft}}<br>
+						    <!-- {{description}} -->
 
 				  </div>
 				</div>

@@ -1,3 +1,9 @@
+.row-eq-height {
+  display:table;
+  width:100%;
+  border-spacing:10px; 
+}
+
 #map { 
   height: 400px;
   border: solid 1px black;
