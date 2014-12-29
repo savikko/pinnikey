@@ -1,6 +1,6 @@
 <template name="logBook">
 	<div class="page-header">
-	  <h1>Logbook</h1>
+	  <h1>Logbook <small>My skydives</small></h1>
 	  <button class="btn btn-default btn-block btn-success" id="newJump">New jump</button>
 	</div>
 	<div class="row row-eq-height">
@@ -8,7 +8,7 @@
 		    <div class="col-md-4 col-sm-6 col-xs-12">
 				<div class="panel panel-default">
 				  <div class="panel-heading">
-				    <h3 class="panel-title">#{{jumpnumber}} <small>{{prettifyDate dateofjump}} <i class="fa fa-location-arrow"></i>: {{location}}</small></h3>
+				    <h3 class="panel-title">#{{jumpnumber}} <small>{{prettifyDate dateofjump}} <i class="fa fa-location-arrow"></i> {{location}}</small></h3>
 				  </div>
 				  <div class="panel-body">
 				    <i class="fa fa-cloud-download"></i> : {{altitude}} m |

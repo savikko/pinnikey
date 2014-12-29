@@ -3,7 +3,7 @@ Template.logBook.helpers({
    return Logbook.find({},{sort: {jumpnumber: -1}});
   },
   prettifyDate: function(timestamp) {
-    return moment(new Date(timestamp)).format('DD.MM.YYYY (dddd)');
+    return moment(new Date(timestamp)).format('DD.MM.YYYY');
   }
 });
 
