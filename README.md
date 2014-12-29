@@ -10,6 +10,9 @@ Components:
 * Manifesting (not done)
 * Gear management (not done)
 * Events (not done)
+* Statistics:
+  * Dropzone-specific
+  * Skydiver-specific
 
 
 Dependencies
