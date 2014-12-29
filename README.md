@@ -9,6 +9,7 @@ Components:
 * Dropzone list (partially done)
 * Manifesting (not done)
 * Gear management (not done)
+* Events (not done)
 
 
 Dependencies
