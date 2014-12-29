@@ -9,7 +9,11 @@ Components:
 * Dropzone list (partially done)
 * Manifesting (not done)
 * Gear management (not done)
+* Dropzone communications (notifications to local skydivers)
 * Events (not done)
+* Statistics:
+  * Dropzone-specific
+  * Skydiver-specific
 
 
 Dependencies
