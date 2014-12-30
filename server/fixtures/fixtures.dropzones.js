@@ -47,7 +47,7 @@ if (Dropzones.find().count() === 0) {
 
   Dropzones.insert({
     name: 'Skyxperience Malmi',
-    airfield: 'EFTU',
+    airfield: 'EFHF',
     website: 'http://4k.fi',
     "coordinate" : {
       "lat" : 60.250548, 
@@ -161,7 +161,7 @@ if (Dropzones.find().count() === 0) {
   });
   Dropzones.insert({
     name: 'Vaasan Laskuvarjokerho',
-    airfield: 'EFTU',
+    airfield: 'EFVA',
     website: 'http://vaasanlaskuvarjokerho.net',
     "coordinate" : {
       "lat" : 63.045779, 

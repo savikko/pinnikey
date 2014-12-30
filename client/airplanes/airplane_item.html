@@ -1,10 +1,15 @@
 <template name="airplaneItem">
-  <div class="airplane">
-    <div class="airplane-content">
-      <h3>{{registration}}<span>{{make}} {{model}}</span></h3>
-      <p>
-        Aircraft Info here.<br> 
-      </p>
-    </div>
-  </div>
+   {{#with airplane}}
+		    	<div class="panel panel-default">
+				  <div class="panel-heading">
+				    <h3 class="panel-title"><a href="{{pathFor 'airplanePage'}}">     
+					    {{registration}} ({{make}} {{model}})</a></h3>
+				  </div>
+				  <div class="panel-body">
+ 						<img src="/img/pinnikey_onlypin.png?n" alt="{{registration}} {{make}} {{model}} image" align=right width=50 class="airplanelist-img">
+					     MTOW: {{mtow}} kg, {{maxjumpers}} skydivers<br>
+						<br>
+				  </div>
+				</div>
+    {{/with}}
 </template>
