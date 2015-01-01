@@ -4,6 +4,7 @@ Meteor.subscribe('airplanes');
 
 Meteor.subscribe('logbook');
 
+Meteor.subscribe('rigs');
 
 Accounts.ui.config({
   passwordSignupFields: "USERNAME_ONLY"
@@ -21,4 +22,5 @@ UI.registerHelper('say', function (){
 	  if (typeof arguments[i] == 'string' || arguments[i] instanceof String) saytext=saytext + ' ' + arguments[i]
 	}
 	tts.speak(saytext,'fi');
+
  });

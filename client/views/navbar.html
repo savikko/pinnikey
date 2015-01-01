@@ -26,10 +26,11 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gear<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Your Rig #1 (active,in shape)</a></li>
-            <li><a href="#">Your Rig #2 (passive,needs attention)</a></li>
+            {{#each rigs}}
+                <li><a href="{{pathFor 'rigPage'}}">{{make}} ({{model}})</a></li>
+            {{/each}}
             <li class="divider"></li>
-            <li><a href="#">Add rig</a></li>
+            <li><a href="{{pathFor 'newRig'}}">Add rig</a></li>
           </ul>
         </li>
         <li class="dropdown">

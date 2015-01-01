@@ -6,6 +6,10 @@ Meteor.publish('airplanes', function() {
 	return Airplanes.find();
 });
 
+Meteor.publish('rigs', function() {
+	return Rigs.find();
+});
+
 Meteor.publish('logbook', function() {
 	var currentUserId = this.userId;
 	return Logbook.find({createdBy: currentUserId});

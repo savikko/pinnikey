@@ -4,5 +4,8 @@ Template.navbar.helpers({
   },
   airplanes: function() {
    return Airplanes.find();
+  },
+  rigs: function() {
+   return Rigs.find();
   }
 });
