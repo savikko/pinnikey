@@ -1,11 +1,20 @@
 <template name="dropzonePage">
 
 	<div class="jumbotron">
-	  {{say 'Tämä on ' name}}
-	  
 	  <h1>{{name}}</h1>
 	  <p>Hi! We are {{name}} and we are located at {{airfield}}.</p>
 	  <p>You can find more information about us at <a href={{website}}>{{website}}</a>.</p>
+	  {{#if gmapid}}
+		  <div class="panel panel-default"> 
+						<div class="panel-heading">
+					    <h3 class="panel-title">Landing area map</h3>
+						</div>
+						<div class="panel-body">
+						<span class="hidden-xs hidden-sm"><iframe src="https://www.google.com/maps/d/u/0/embed?mid={{gmapid}}" width="640" height="480"></iframe></span>
+						<span class="hidden-md hidden-lg"><a href="https://www.google.com/maps/d/u/0/edit?mid={{gmapid}}">See landing area map</a></span>
+						</div>
+		  </div>
+	  {{/if}}
 	</div>
 	<div class="container">
 	  {{#if onePlane}}
