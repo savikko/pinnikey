@@ -1,5 +1,4 @@
 <template name="dropzonePage">
-
 	<div class="jumbotron">
 	  <h1>{{name}}</h1>
 	  <p>Hi! We are {{name}} and we are located at {{airfield}}.</p>
@@ -40,6 +39,14 @@
 			  {{/each}}
 			  </div>
 	  {{/if}}
+	  <div class="row">
+	   <h3>Managers:</h3>
+	   {{#each managers}}
+	   	 {{role}}: 
+	   	 {{> userItem}}
+	   {{/each}}
+	   </div>
+
 	</div>
 
 </template>

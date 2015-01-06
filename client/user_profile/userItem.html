@@ -1,0 +1,22 @@
+<template name="userItem">
+ {{#with user}}
+ 		    	<div class="panel panel-default">
+				  <div class="panel-heading">
+				    <h3 class="panel-title">{{profile.firstName}} {{profile.lastName}}</h3>
+				  </div>
+				  <div class="panel-body">
+ 						<img src="/img/pinnikey_onlypin.png?n" alt="profile image" align=right width=50 class="airplanelist-img">
+
+					   	{{#if profile.fbprofile}}
+					    	<i class="fa fa-facebook-square"></i> <a target=_new href={{profile.fbprofile}}>Facebook profile</a><br>
+					    	{{/if}}
+					   	{{#if profile.phone}}
+					    	<i class="fa fa-phone"></i> <a href=tel:{{profile.phone}}>{{profile.phone}}</a><br>
+					    	{{/if}}
+
+					    <br>
+						<br>
+				  </div>
+				</div>
+ {{/with}}
+</template>

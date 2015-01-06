@@ -2,6 +2,9 @@ Template.dropzonePage.helpers({
  airplane: function() {
 	return Airplanes.find({_id: this._id});
 	},
+ username: function() {
+	var user = Meteor.users.findOne(this.id);
+	},
  onePlane: function() {
  	if (this.airplanes.length==1) return true;
  	},
@@ -12,3 +15,4 @@ Template.dropzonePage.helpers({
  	return this.airplanes.length;
  }
 });
+

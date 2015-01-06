@@ -6,6 +6,8 @@ Meteor.subscribe('logbook');
 
 Meteor.subscribe('rigs');
 
+Meteor.subscribe('users');
+
 Accounts.ui.config({
   passwordSignupFields: "USERNAME_ONLY"
 });
