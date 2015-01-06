@@ -32,10 +32,10 @@ cd /to/right/path
 ...zipalign
 ```
 
-Deploying to app.pinnikey.com:
+Deploying to app.pinnikey.com (with Meteor Up):
 In pinnikey-deploy directory 
 ```
-meteor deploy
+mup deploy
 ```
 
 
