@@ -15,6 +15,26 @@ Components:
   * Dropzone-specific
   * Skydiver-specific
 
+Deployment help
+==============
+
+Deployment to your local computer (starting at localhost:3000 as default:
+
+```
+meteor
+```
+
+Building android version:
+```
+meteor build /path/to/build/pinnikey-build --server app.pinnikey.com:80
+```
+
+Deploying to app.pinnikey.com:
+In pinnikey-deploy directory 
+```
+meteor deploy
+```
+
 
 Dependencies
 ============
