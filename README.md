@@ -27,12 +27,15 @@ meteor
 Building android version:
 ```
 meteor build /path/to/build/pinnikey-build --server app.pinnikey.com:80
+cd /to/right/path
+...jarsigner
+...zipalign
 ```
 
-Deploying to app.pinnikey.com:
+Deploying to app.pinnikey.com (with Meteor Up):
 In pinnikey-deploy directory 
 ```
-meteor deploy
+mup deploy
 ```
 
 
