@@ -3,6 +3,9 @@ Pinnikey
 
 This is Pinnikey. Skydiving management system built with Meteor.
 
+Test version runs at http://app.pinnikey.com
+Android .apk can be found from public/apk (app.pinnikey.com/Pinnikey_signed.apk)
+
 Components:
 
 * Logbook (partially done)
