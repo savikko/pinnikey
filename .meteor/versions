@@ -28,6 +28,7 @@ follower-livedata@1.0.3
 fortawesome:fontawesome@4.2.0_2
 geojson-utils@1.0.2
 handlebars@1.0.2
+harrison:papa-parse@1.0.10
 html-tools@1.0.3
 htmljs@1.0.3
 http@1.0.9
