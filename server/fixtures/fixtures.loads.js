@@ -1,7 +1,7 @@
 if (Loads.find().count() === 0) {
   Loads.insert({
     dropzone: "j4XkEXDh7TNbR3ZbC",
-    airplane: "6g754YeM8ia8QcidK",
+    airplane: "w3xx2oBWwFv5KBqHG",
     loadnumber: 1,
     jumpers: [ 
       {
@@ -24,7 +24,7 @@ if (Loads.find().count() === 0) {
   });
   Loads.insert({
     dropzone: "j4XkEXDh7TNbR3ZbC",
-    airplane: "6g754YeM8ia8QcidK",
+    airplane: "w3xx2oBWwFv5KBqHG",
     loadnumber: 2,
     jumpers: [ 
       {
