@@ -11,5 +11,9 @@ Template.logBook.events({
     'click #newJump': function(event) {
         event.stopPropagation();
         Router.go('logBookNewJump');
+    },
+    'click #importJumps': function(event) {
+        event.stopPropagation();
+        Router.go('logBookImport');
     }
 });

@@ -1,0 +1,29 @@
+<template name="logBookImport">
+	<div class="page-header">
+	  <h1>Logbook <small>Import</small></h1>
+	</div>
+	<div class="row row-eq-height">
+	  Possible fields:
+	  <ul>
+		<li>jumpnumber</li>
+	    <li>dateofjump</li>
+	    <li>location</li>
+	    <li>altitude</li>
+	    <li>rig </li>
+	    <li>freefallTime</li>
+	    <li>openingAltitude</li>
+	    <li>aircraft</li>
+		<li>description</li>
+	  </ul>
+	  Example file: 
+      Import your previous logbook, paste your CSV here:
+      <br><br>
+      <textarea rows="5" id="csv" class="form-control"></textarea><br>
+      <button class="btn btn-default btn-block btn-default" id="readCsv">Read CSV</button>
+    </div>
+    <div id="results"></div>
+    OK:
+    <div id="extendedResultsOKs"></div>
+    Errors:
+    <div id="extendedResultsErrors"></div>
+</template>
