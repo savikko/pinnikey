@@ -5,7 +5,7 @@ if (Airplanes.find().count() === 0) {
     model: '182',
     mtow: '1338',
     maxaltitude: '4000',
-    maxjumpers: '4'
+    maxjumpers: 4
   });
   Airplanes.insert({
     registration: 'OH-CEW',
@@ -13,7 +13,7 @@ if (Airplanes.find().count() === 0) {
     model: '172',
     mtow: '1100',
     maxaltitude: '2700',
-    maxjumpers: '3'
+    maxjumpers: 4
   });
   Airplanes.insert({
     registration: 'OH-CEW',
@@ -21,6 +21,6 @@ if (Airplanes.find().count() === 0) {
     model: 'Porter',
     mtow: '2000',
     maxaltitude: '4000',
-    maxjumpers: '8'
+    maxjumpers: 8
   });
 }
