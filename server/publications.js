@@ -16,5 +16,9 @@ Meteor.publish('logbook', function() {
 });
 
 Meteor.publish('users', function(userIds) {
-  return Meteor.users.find({}, {fields: {emails: 1, profile: 1}});
+  return Meteor.users.find({_id: userIds}, {fields: {emails: 1, profile: 1}});
+});
+
+Meteor.publish('loads', function(dz) {
+  return Loads.find({dropzone: dz});
 });
