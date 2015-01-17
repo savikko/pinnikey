@@ -14,6 +14,7 @@ Components:
 * Gear management (not done)
 * Dropzone communications (notifications to local skydivers)
 * Events (not done)
+* Pilot functions (including logging in with qr-code etc)
 * Statistics:
   * Dropzone-specific
   * Skydiver-specific
