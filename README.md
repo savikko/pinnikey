@@ -10,7 +10,7 @@ Components:
 
 * Logbook (partially done)
 * Dropzone list (partially done)
-* Manifesting (not done)
+* Manifesting (few skeletons done)
 * Gear management (not done)
 * Dropzone communications (notifications to local skydivers)
 * Events (not done)
