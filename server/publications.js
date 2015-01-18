@@ -16,7 +16,8 @@ Meteor.publish('logbook', function() {
 });
 
 Meteor.publish('users', function(userIds) {
-  return Meteor.users.find({_id: userIds}, {fields: {emails: 1, profile: 1}});
+  usersfetched = Meteor.users.find({_id: {$in: userIds}}, {fields: {emails: 1, profile: 1}});
+  return usersfetched;
 });
 
 Meteor.publish('loads', function(dz) {

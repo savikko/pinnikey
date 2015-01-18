@@ -1,18 +1,31 @@
 <template name="loadItem">
 		    	<div class="panel panel-default">
 				  <div class="panel-heading">
-					    <span class="pull-right"><h3>{{status}}</h3></span>
+					    <span class="pull-right">
+						    {{#if closed}}
+						      <button type="button" class="btn btn-default" disabled="disabled">{{status}}</button>
+						    {{else}}
+						      {{#if freeslots}}
+						      	{{#if lightenough}}
+						      		<button type="button"  id="addJump" class="btn btn-success">{{status}}</button>
+						      	{{else}}
+						      		<button type="button" class="btn btn-success" disabled="disabled">{{status}}, but you are too fat</button>
+						      	{{/if}}
+						      {{else}}
+						      <button type="button" class="btn btn-default" disabled="disabled">{{status}}</button>
+						      {{/if}}
+						    {{/if}}
+						</span>
 				    <h3 class="panel-title"><a href="{{pathFor 'airplanePage'}}">     
 					    Load {{loadnumber}} ({{airplane.registration}} / {{airplane.make}} {{airplane.model}})</a></h3>
-					    Jumpers on the load: {{jumpers.length}}. Aircraft takes {{airplane.maxjumpers}} at a time.
+					    Skydivers: {{jumpers.length}} | Total weight of the skydivers: {{total_weight}} kg | Kilos left {{kilosleft}}
 				  </div>
 				  <div class="panel-body">
  						<img src="/img/pinnikey_onlypin.png?n" alt="{{registration}} {{make}} {{model}} image" align=right width=50 class="airplanelist-img">
 					    Jumpers:<br>
 					    {{#each jumpers}}
-					     {{jumper.profile.firstName}} {{jumper.profile.lastName}}: {{type}} @ {{altitude}}<br>
+					     {{jumper.profile.firstName}} {{jumper.profile.lastName}}: {{type}} @ {{altitude}}<button type="button" name={{../_id}} class="btn btn-success" id="cancelJump">Cancel</button> <br>
 					    {{/each}}
-					    <br>
-				  </div>
+					    				  </div>
 				</div>
 </template>
