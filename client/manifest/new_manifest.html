@@ -1,26 +1,29 @@
 <template name="newManifest">
 	{{#if currentdz}}
-	<div class="page-header">
-	  <h1>Manifest for jump<br><small>at {{currentdz}}</small></h1>
-	</div>
-	<div class="row">
-	  	 {{#each airplanes}}
-	  	 <div class="col-md-3">
-		  <button type="button" class="btn btn-default" id="addNewLoad">Add new load {{registration}} ({{make}} {{model}})</button>
-		 </div>
-	  	 {{/each}}
-	</div>
-	<div class="row">
-	<p></p>
-	</div>
-	<div class="row">
-		{{#each load}}
-		<div class="col-xs-12 col-md-6">
-		  {{> loadItem}}
-	  	</div>
+		<div class="page-header">
+		  <h1>Manifest for jump<br><small>at {{currentdz}}</small></h1>
+		</div>
+		{{#each airplanes}}
+			<div class="col-xs-12 col-md-6">
+			<h3>{{registration}} ({{make}}  {{model}})</h3>
+				<button type="button" class="btn btn-default" id="addNewLoad">Add new load {{registration}} ({{make}}
+				  {{model}})</button>
+				  		<br><br>
+				  	Open loads
+						{{#each openloads _id}}
+							  	{{> loadItem}}
+						{{/each}}
+				  	Closed loads
+						{{#each closedloads}}
+					  		{{> loadItem}}
+						{{/each}}
+			</div>
 		{{/each}}
-	</div>
+		<hr>
+		<div class="row">
+
+		</div>
 	{{else}}
-	Please set your current dz first (add dropzone id to your profile).
+		Please set your email, current dz and your weight first (add these at your profile edit).
 	{{/if}}
 </template>

@@ -6,6 +6,14 @@ Template.loadItem.helpers({
   jumper: function(id) {
 	 return Meteor.users.findOne(this.id);
 	},
+  useronload: function(id) {
+    if (_.find(Loads.findOne(this._id).jumpers, function(obj) { return obj.id == Meteor.userId() }).id==Meteor.userId()) {
+      return true
+    }
+    else {
+      return false;
+    } 
+  },
   freeslots: function() {
   	slotsavailable = Airplanes.findOne({_id: this.airplane}).maxjumpers;
   	if (Loads.findOne(this._id).jumpers.length) {
@@ -28,9 +36,9 @@ Template.loadItem.helpers({
   	if (Loads.findOne(this._id).jumpers.length) {
   		slotsused = Loads.findOne(this._id).jumpers.length;
   	}
-  	else{
+  	else {
      	slotsused = 0;
-	}
+    }
 
   	slotsfree = slotsavailable-slotsused;
   	if (slotsfree===0) {
@@ -74,16 +82,56 @@ Template.loadItem.helpers({
 Template.loadItem.events({
     'click #cancelJump': function(event) {
         event.stopPropagation();
-        jump = this;
-        load = event.currentTarget.name;
+        load = this._id;
+        jump = _.find(Loads.findOne(load).jumpers, function(obj) { return obj.id == Meteor.userId() });
         return Meteor.call("removeSkydiverFromLoad", load, jump);
         //Meteor.call
     },
-    'click #addJump': function(event) {
+    'click .addJump': function(event) {
+        event.stopPropagation();
+        var addJumpbutton = document.getElementById('addJump-' + this._id);
+        var e = document.getElementById('jumpdetails-' + this._id);
+           if(e.style.display == 'block') {
+              e.style.display = 'none';
+              addJumpbutton.className = "addJump btn btn-success";
+              }
+           else {
+              e.style.display = 'block';
+              addJumpbutton.className = "addJump btn btn-default";
+              // following is totally wrong place for these, but for some reason .rendered does not work..
+              $("#type-" + this._id).select2({
+                  placeholder: "Select type of jump"
+              });
+              $("#altitude-" + this._id).select2({
+                  placeholder: "Select an altitude"
+              });
+            }
+        return true;
+    },
+    'click #confirmJump': function(event) {
         event.stopPropagation();
         load = this._id; //load id
-        return Meteor.call("addSkydiverToLoad", load, 1500, "Ooossomi");
+        var addJumpbutton = document.getElementById('addJump-' + this._id);
+        var altitude = document.getElementById("altitude-" + this._id).options[document.getElementById("altitude-" + this._id).selectedIndex].value;
+        var type = document.getElementById("type-" + this._id).options[document.getElementById("type-" + this._id).selectedIndex].value;
+        var e = document.getElementById('jumpdetails-' + this._id);
+           if(e.style.display == 'block') {
+              e.style.display = 'none';
+              addJumpbutton.className = "addJump btn btn-success"; // return button to be green if manifesting for some reason fails
+              }
+           else
+              e.style.display = 'block';
+        return Meteor.call("addSkydiverToLoad", load, altitude, type);
         //Meteor.call
     },
-
 });
+
+Template.loadItem.rendered = function(){
+  $("#type-" + this._id).select2({
+      placeholder: "Select type of jump"
+  });
+  $("#altitude-" + this._id).select2({
+      placeholder: "Select an altitude"
+  });
+  console.log('paskaa');
+};

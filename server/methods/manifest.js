@@ -8,6 +8,10 @@ Meteor.methods({
     return true;
   },
   removeSkydiverFromLoad: function (load,jump) {
+    console.log('About to delete from load:');
+    console.log(load);
+    console.log('Jump:');
+    console.log(jump);
     Loads.update({_id: load},{$pull:{jumpers: jump}});
     return true;
   },
@@ -22,15 +26,12 @@ Meteor.methods({
       console.log('not found!');
       nextLoad = 1;
     };
-    //nextLoad = 1;
-    console.log ('Next load is:');
-    console.log(nextLoad);
-    // dz = Dropzones.findOne(user.profile.currentdz);
     Loads.insert({
     dropzone: dz,
     airplane: airplane,
     loadnumber: nextLoad,
     createdBy: this.userId,
+    closed: false,
     jumpers: [],
     pilot: "mNQc66f42TYSboGLQ"
      });
