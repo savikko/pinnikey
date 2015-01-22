@@ -133,5 +133,4 @@ Template.loadItem.rendered = function(){
   $("#altitude-" + this._id).select2({
       placeholder: "Select an altitude"
   });
-  console.log('paskaa');
 };
