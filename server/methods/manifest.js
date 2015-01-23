@@ -17,15 +17,17 @@ Meteor.methods({
   },
   addNewLoad: function (dz,airplane) {
     user =  Meteor.users.findOne(this.userId);
-    lastLoad = Loads.findOne({dropzone: dz, "airplane" : airplane, date: {$gte: moment().startOf('day')._d}},{sort: {loadnumber: -1}});
+    dzobj = Dropzones.findOne(dz);
+    lastLoad = Loads.findOne({dropzone: dz, "airplane" : airplane, date: {$gte: moment().tz(dzobj.timezone).startOf('day').toISOString()}},{sort: {loadnumber: -1}});
     if (lastLoad) {
       console.log('found!');
       nextLoad = lastLoad.loadnumber+1;
     }
-    else {
+    else { // we didn't find any loads for today
       console.log('not found!');
       nextLoad = 1;
     };
+
     Loads.insert({
     dropzone: dz,
     airplane: airplane,
@@ -33,7 +35,7 @@ Meteor.methods({
     createdBy: this.userId,
     closed: false,
     jumpers: [],
-    pilot: "mNQc66f42TYSboGLQ"
+    pilot: "mNQc66f42TYSboGLQ" // static for development purposes for now..
      });
     return true;
   },
