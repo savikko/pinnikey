@@ -37,6 +37,63 @@ Command launches meteor instance and you should see Pinnikey on http://localhost
 
 Then, explore repository with *insert-your-favorite-text-editor-here* (Sublime Text for example or emacs or vi) and make your edits and commit your changes to your own branch.
 
+Collections
+==============
+
+Currently there are following "main" collections:
+
+* Users (with user profile)
+* Rigs
+  * Gear linked to user with managers -object
+* Logbook
+  * Logbook is linked to user with createdBy
+* Airplanes
+  * List of airplanes, including weight/maxjumpers data
+* Dropzones
+  * List of dropzones, including geolocation data. Linked to users (as managers) and airplanes.
+* Loads
+  * List of loads, currently every load has dropzone and aircraft info, and (auto)increment value for load number by date. One document is one load.
+
+Planned (which will probably change somehow) workflows
+=========
+
+##User registration
+
+Pinnikey should ask user's current licenses and all the info which is relevant to skydiving operations (weight etc).
+If should be able to mark himself/herself as a pilot also.
+
+##Registration to dropzone
+
+User should be able to registrate to dropzone, reading all the documents dropzone managers want new skydivers to read. There may be documents regarding airplane (loading instructions, door opening instructions) or dropzone (landing zone instructions etc).
+When user registrates to dropzone, dropzone manager should next do some kind of authorization which includes checking his/her logbook and rig status.
+There may be (historical reasons) dropzone-specific accounts for skydivers. Used usually for reporting/accounting.
+
+##Manifesting to load
+
+User should be able to manifest by himself/herself by mobile by logging in with his/her own credentials. There should be option to manifest any (who has registrated to dropzone) skydiver by logging in with some sort of 'manager' account. That will also allow smalled dropzones to use one public computer for self-manifesting without logging in separately.
+
+Team manifesting should not be MVP feature. Student manifesting should be done for MVP as simple as it's possible.
+
+##Ground person functions
+
+Ground person should be able to see current load status (defined by pilot) and do (optionally) post-manifesting.
+
+##Pilot functions
+
+Pilot should be able to see detailed info on loads: what kind of jumpruns should we fly, is there some special occasions.
+Pilot should be able to mark different status regarding pre-load, load and post-load:
+
+* People on board
+* Takeoff
+* Skydivers dropped (jumprun by jumprun possibly)
+* Coming down (putting 5 min call)
+* Touchdown
+* Kerosene fillings
+
+## Dropzone reporting functions
+
+Dropzone should be able to print out all the loads day by day in some machine-readable format.
+
 Miscellaneous instructions
 =======================
 
