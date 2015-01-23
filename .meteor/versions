@@ -64,6 +64,7 @@ mongo-livedata@1.0.7
 mrt:flash-messages@1.0.0
 mrt:leaflet@0.3.8
 mrt:moment@2.8.1
+mrt:moment-timezone@0.2.1
 natestrauser:select2@3.5.1
 npm-bcrypt@0.7.7
 oauth@1.1.3
