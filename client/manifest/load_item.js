@@ -1,4 +1,15 @@
 Template.loadItem.helpers({
+  callbuttonstate: function() {
+    var activeCallButton = document.getElementById(this.status + '-' + this._id);
+    $(activeCallButton).addClass("btn-success").siblings().removeClass('btn-success');
+    say('load');
+    return;
+  },
+  airplanebuttonstate: function() {
+    var activeAirplaneButton = document.getElementById(this.airplanestatus);
+    $(activeAirlaneButton).addClass("btn-success").siblings().removeClass('btn-success');
+    return;
+  },
   airplane: function() {
   	airplane = Airplanes.findOne({_id: this.airplane});
 	return airplane;
@@ -10,8 +21,8 @@ Template.loadItem.helpers({
 	 return Meteor.users.findOne(this.id);
 	},
   useronload: function(id) {
-    if (_.find(Loads.findOne(this._id).jumpers, function(obj) { return obj.id == Meteor.userId() }).id==Meteor.userId()) {
-      return true
+    if (_.find(Loads.findOne(this._id).jumpers, function(obj) { return obj.id == Meteor.userId(); }).id==Meteor.userId()) {
+      return true;
     }
     else {
       return false;
@@ -24,7 +35,7 @@ Template.loadItem.helpers({
   	}
   	else{
      	slotsused = 0;
-	}
+	  }
   	slotsfree = slotsavailable-slotsused;
   	if (slotsfree>0) {
   		return true;
@@ -86,7 +97,7 @@ Template.loadItem.events({
     'click #cancelJump': function(event) {
         event.stopPropagation();
         load = this._id;
-        jump = _.find(Loads.findOne(load).jumpers, function(obj) { return obj.id == Meteor.userId() });
+        jump = _.find(Loads.findOne(load).jumpers, function(obj) { return obj.id == Meteor.userId(); });
         return Meteor.call("removeSkydiverFromLoad", load, jump);
         //Meteor.call
     },
@@ -127,31 +138,40 @@ Template.loadItem.events({
         return Meteor.call("addSkydiverToLoad", load, altitude, type);
         //Meteor.call
     },
-    'click #callNoCall': function(event) {
+    'click .callNoCall': function(event) {
         event.stopPropagation();
         load = this._id; //load id
         return Meteor.call("loadCall", load, 'callNoCall');
     },
-    'click #call20min': function(event) {
+    'click .call20min': function(event) {
         event.stopPropagation();
         load = this._id; //load id
-        return Meteor.call("loadCall", load, 'call20');
+        airplanecall = Airplanes.findOne(this.airplane).registration.slice(-2).split('').join('');
+        console.log(airplanecall);
+        tts.speak('Load ' + this.loadnumber + ', ' + airplanecall + ', 20 minutes.','en');
+        return Meteor.call("loadCall", load, 'call20min');
     },
-    'click #call10min': function(event) {
+    'click .call10min': function(event) {
         event.stopPropagation();
         load = this._id; //load id
-        return Meteor.call("loadCall", load, 'call10');
+        airplanecall = Airplanes.findOne(this.airplane).registration.slice(-2).split('').join('');
+        tts.speak('Load ' + this.loadnumber + ', ' + airplanecall + ', 10 minutes.','en');
+        return Meteor.call("loadCall", load, 'call10min');
     },
-    'click #call5min': function(event) {
+    'click .call5min': function(event) {
         event.stopPropagation();
         load = this._id; //load id
-        return Meteor.call("loadCall", load, 'call5');
+        airplanecall = Airplanes.findOne(this.airplane).registration.slice(-2).split('').join('');
+        tts.speak('Load ' + this.loadnumber + ', ' + airplanecall + ', 5 minutes. Gear up!','en');
+        return Meteor.call("loadCall", load, 'call5min');
     },
-    'click #callGo': function(event) {
+    'click .callGo': function(event) {
         event.stopPropagation();
         load = this._id; //load id
+        airplanecall = Airplanes.findOne(this.airplane).registration.slice(-2).split('').join('');
+        tts.speak('Load ' + this.loadnumber + ', ' + airplanecall + ', go to the plane!','en');
         return Meteor.call("loadCall", load, 'callGo');
-    }
+    } 
 });
 
 Template.loadItem.rendered = function(){
@@ -161,4 +181,5 @@ Template.loadItem.rendered = function(){
   $("#altitude-" + this._id).select2({
       placeholder: "Select an altitude"
   });
+  
 };

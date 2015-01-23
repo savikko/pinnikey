@@ -45,7 +45,12 @@ Meteor.methods({
   loadCall: function (load,call) {
     console.log('Change in call:');
     console.log(load + ' call ' + call);
-    Loads.update({_id: load},{$set: {status: call}});
+    if (call=='call5min' || call=='callGo') {
+      closedstate = true;
+    } else {
+      closedstate = false;
+    }
+    Loads.update({_id: load},{$set: {status: call, closed: closedstate}});
     return true;
   },
 });
