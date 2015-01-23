@@ -6,16 +6,16 @@
 								<button type="button" class="btn btn-danger" id="cancelJump">Cancel</button>
 							{{else}}
 							    {{#if closed}}
-							      <button type="button" class="btn btn-default" disabled="disabled">{{status}}</button>
+							      <button type="button" class="btn btn-default" disabled="disabled">{{loadstatus}}</button>
 							    {{else}}
 							      {{#if freeslots}}
 							      	{{#if lightenough}}
-							      		<button type="button"  id="addJump-{{_id}}" class="addJump btn btn-success">{{status}}</button>
+							      		<button type="button"  id="addJump-{{_id}}" class="addJump btn btn-success">{{loadstatus}}</button>
 							      	{{else}}
-							      		<button type="button" class="btn btn-success" disabled="disabled">{{status}}, but you are too fat</button>
+							      		<button type="button" class="btn btn-success" disabled="disabled">{{loadstatus}}, but you are too fat</button>
 							      	{{/if}}
 							      {{else}}
-							      <button type="button" class="btn btn-default" disabled="disabled">{{status}}</button>
+							      <button type="button" class="btn btn-default" disabled="disabled">{{loadstatus}}</button>
 							      {{/if}}
 							    {{/if}}
 						    {{/if}}
@@ -60,24 +60,24 @@
 					</div>
 
 				    <div class="panel-heading" id="loadmanage-{{_id}}" style="display: block;"> 
-				      <div class="btn-group btn-group-sm" role="group">
-						<button type="button" class="btn btn-default" id="callNo">No call</button>
-						<button type="button" class="btn btn-default" id="call20min">20 min</button>
-						<button type="button" class="btn btn-success" id="call10min">10 min</button>
-						<button type="button" class="btn btn-default" id="call5min">5 min</button>
-						<button type="button" class="btn btn-default" id="callGear">Gear</button>
+				      <div class="btn-group btn-group-sm" role="group">{{callbuttonstate}}
+						<button type="button" class="callNoCall btn btn-default" id="callNoCall-{{_id}}">No call</button>
+						<button type="button" class="call20min btn btn-default" id="call20min-{{_id}}">20 min</button>
+						<button type="button" class="call10min btn btn-default" id="call10min-{{_id}}">10 min</button>
+						<button type="button" class="call5min btn btn-default" id="call5min-{{_id}}">5 min</button>
+						<button type="button" class="callGo btn btn-default" id="callGo-{{_id}}">Go</button>
 					  </div>
 					  <i class="fa fa-chevron-left"></i> Ground controls
 				    </div>
 
 				    <div class="panel-heading" id="pilotfunctions-{{_id}}" style="display: block;">
 				      <div class="btn-group btn-group-sm" role="group">
-						<button type="button" class="btn btn-default" id="peopleOnBoard">Skydivers in</button>
-						<button type="button" class="btn btn-success" id="takeOff">Takeoff</button>
-						<button type="button" class="btn btn-default" id="jumprunDrop">Drop</button>
-						<button type="button" class="btn btn-default" id="comingDown">Coming down</button>
-						<button type="button" class="btn btn-warning" id="callGear">Gas needed</button>
+						<button type="button" class="peopleOnBoard btn btn-default" id="peopleOnBoard-{{_id}}">Skydivers in</button>
+						<button type="button" class="takeOff btn btn-success" id="takeOff-{{_id}}">Takeoff</button>
+						<button type="button" class="jumprunDrop btn btn-default" id="jumprunDrop-{{_id}}">Drop</button>
+						<button type="button" class="comingDown btn btn-default" id="comingDown-{{_id}}">Coming down</button>
 					  </div>
+					  	<button type="button" class="gasNeeded btn btn-sm btn-warning" id="gasNeeded-{{_id}}">Tank</button>
 					   <i class="fa fa-chevron-left"></i> Pilot controls
 				    </div>
 
