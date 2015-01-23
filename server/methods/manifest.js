@@ -18,7 +18,9 @@ Meteor.methods({
   addNewLoad: function (dz,airplane) {
     user =  Meteor.users.findOne(this.userId);
     dzobj = Dropzones.findOne(dz);
-    lastLoad = Loads.findOne({dropzone: dz, "airplane" : airplane, date: {$gte: moment().tz(dzobj.timezone).startOf('day').toISOString()}},{sort: {loadnumber: -1}});
+    startofday = new Date(moment().tz(dzobj.timezone).startOf('day').toISOString());
+    console.log(startofday);
+    lastLoad = Loads.findOne({dropzone: dz, "airplane" : airplane, date: {$gte: startofday}},{sort: {loadnumber: -1}});
     if (lastLoad) {
       console.log('found!');
       nextLoad = lastLoad.loadnumber+1;
