@@ -34,7 +34,7 @@ Template.loadItem.helpers({
   		return false;
   	}
     },
-  status: function(id) {
+  loadstatus: function(id) {
   	slotsavailable = Airplanes.findOne({_id: this.airplane}).maxjumpers;
   	if (Loads.findOne(this._id).jumpers.length) {
   		slotsused = Loads.findOne(this._id).jumpers.length;
@@ -45,17 +45,17 @@ Template.loadItem.helpers({
 
   	slotsfree = slotsavailable-slotsused;
   	if (slotsfree===0) {
-  		status = "FULL";
+  		loadstatus = "FULL";
   	}
   	else if (slotsfree==1)
   	{
-  		status = slotsavailable-slotsused+" slot available";
+  		loadstatus = slotsavailable-slotsused+" slot available";
   	}
   	else
   	{
-  		status = slotsavailable-slotsused+" slots available";  		
+  		loadstatus = slotsavailable-slotsused+" slots available";  		
   	}
-  	return status;
+  	return loadstatus;
   },
   total_weight: function(){
   	var weights = _.map(Loads.findOne(this._id).jumpers,function (value){ return value.weight; }); // get weights to array
@@ -127,6 +127,31 @@ Template.loadItem.events({
         return Meteor.call("addSkydiverToLoad", load, altitude, type);
         //Meteor.call
     },
+    'click #callNoCall': function(event) {
+        event.stopPropagation();
+        load = this._id; //load id
+        return Meteor.call("loadCall", load, 'callNoCall');
+    },
+    'click #call20min': function(event) {
+        event.stopPropagation();
+        load = this._id; //load id
+        return Meteor.call("loadCall", load, 'call20');
+    },
+    'click #call10min': function(event) {
+        event.stopPropagation();
+        load = this._id; //load id
+        return Meteor.call("loadCall", load, 'call10');
+    },
+    'click #call5min': function(event) {
+        event.stopPropagation();
+        load = this._id; //load id
+        return Meteor.call("loadCall", load, 'call5');
+    },
+    'click #callGo': function(event) {
+        event.stopPropagation();
+        load = this._id; //load id
+        return Meteor.call("loadCall", load, 'callGo');
+    }
 });
 
 Template.loadItem.rendered = function(){

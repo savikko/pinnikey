@@ -6,19 +6,20 @@
 								<button type="button" class="btn btn-danger" id="cancelJump">Cancel</button>
 							{{else}}
 							    {{#if closed}}
-							      <button type="button" class="btn btn-default" disabled="disabled">{{status}}</button>
+							      <button type="button" class="btn btn-default" disabled="disabled">{{loadstatus}}</button>
 							    {{else}}
 							      {{#if freeslots}}
 							      	{{#if lightenough}}
-							      		<button type="button"  id="addJump-{{_id}}" class="addJump btn btn-success">{{status}}</button>
+							      		<button type="button"  id="addJump-{{_id}}" class="addJump btn btn-success">{{loadstatus}}</button>
 							      	{{else}}
-							      		<button type="button" class="btn btn-success" disabled="disabled">{{status}}, but you are too fat</button>
+							      		<button type="button" class="btn btn-success" disabled="disabled">{{loadstatus}}, but you are too fat</button>
 							      	{{/if}}
 							      {{else}}
-							      <button type="button" class="btn btn-default" disabled="disabled">{{status}}</button>
+							      <button type="button" class="btn btn-default" disabled="disabled">{{loadstatus}}</button>
 							      {{/if}}
 							    {{/if}}
 						    {{/if}}
+						    {{status}}
 						</span>
 				        <h3 class="panel-title"><a href="{{pathFor 'airplanePage'}}">     
 					    Load {{loadnumber}} ({{airplane.registration}} / {{airplane.make}} {{airplane.model}})</a></h3>
@@ -61,11 +62,11 @@
 
 				    <div class="panel-heading" id="loadmanage-{{_id}}" style="display: block;"> 
 				      <div class="btn-group btn-group-sm" role="group">
-						<button type="button" class="btn btn-default" id="callNo">No call</button>
+						<button type="button" class="btn btn-default" id="callNoCall">No call</button>
 						<button type="button" class="btn btn-default" id="call20min">20 min</button>
 						<button type="button" class="btn btn-success" id="call10min">10 min</button>
 						<button type="button" class="btn btn-default" id="call5min">5 min</button>
-						<button type="button" class="btn btn-default" id="callGear">Gear</button>
+						<button type="button" class="btn btn-default" id="callGo">Go</button>
 					  </div>
 					  <i class="fa fa-chevron-left"></i> Ground controls
 				    </div>

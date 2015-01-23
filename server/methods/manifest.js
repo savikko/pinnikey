@@ -21,7 +21,7 @@ Meteor.methods({
     startofday = new Date(moment().tz(dzobj.timezone).startOf('day').toISOString());
     lastLoad = Loads.findOne({dropzone: dz, "airplane" : airplane, date: {$gte: startofday}},{sort: {loadnumber: -1}});
     if (lastLoad) {
-      console.log('found!');
+      console.log('Found one load');
       nextLoad = lastLoad.loadnumber+1;
     }
     else { // we didn't find any loads for today
@@ -41,4 +41,11 @@ Meteor.methods({
     return true;
   },
 
+  // Load statuses
+  loadCall: function (load,call) {
+    console.log('Change in call:');
+    console.log(load + ' call ' + call);
+    Loads.update({_id: load},{$set: {status: call}});
+    return true;
+  },
 });
