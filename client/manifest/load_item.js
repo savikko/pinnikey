@@ -2,7 +2,6 @@ Template.loadItem.helpers({
   callbuttonstate: function() {
     var activeCallButton = document.getElementById(this.status + '-' + this._id);
     $(activeCallButton).addClass("btn-success").siblings().removeClass('btn-success');
-    say('load');
     return;
   },
   airplanebuttonstate: function() {
