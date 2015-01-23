@@ -3,6 +3,9 @@ Template.loadItem.helpers({
   	airplane = Airplanes.findOne({_id: this.airplane});
 	return airplane;
 	},
+  createtime: function() {
+    return moment.tz(this.date,"GMT").fromNow();
+  },
   jumper: function(id) {
 	 return Meteor.users.findOne(this.id);
 	},
