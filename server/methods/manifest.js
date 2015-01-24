@@ -42,15 +42,26 @@ Meteor.methods({
   },
 
   // Load statuses
-  loadCall: function (load,call) {
-    console.log('Change in call:');
-    console.log(load + ' call ' + call);
-    if (call=='call5min' || call=='callGo') {
+  loadStatus: function (load,status) {
+    console.log('Change in status for load ' + load + '. New status: ' + status);
+    if (status=='call5min' || status=='callGo' || status=='loaded' || status=='takeOff' || status=='jumpRunDrop'|| status=='descend') {
       closedstate = true;
     } else {
       closedstate = false;
     }
-    Loads.update({_id: load},{$set: {status: call, closed: closedstate}});
+    Loads.update({_id: load},{$set: {status: status, closed: closedstate}});
+    return true;
+  },
+  reFuel: function (load,status) {
+    currentRefuelState = Loads.findOne(load).refuel;
+    console.log('Refuel state for load: ' + load + ' : ' + currentRefuelState);
+    if (currentRefuelState==true) {
+      newRefuelState = false;
+    } else {
+      newRefuelState = true;
+    }
+    Loads.update({_id: load},{$set: {refuel: newRefuelState}});
+    console.log('Refuel state for load: ' + load + ' changed to ' + newRefuelState);
     return true;
   },
 });
