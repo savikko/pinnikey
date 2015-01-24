@@ -146,6 +146,7 @@ Template.loadItem.events({
         Meteor.call("loadCall", loadid, call,function(error,result){
             if(error){
               console.log(error.reason);
+              return false;
             }
             else{
               calltext='';
@@ -154,7 +155,8 @@ Template.loadItem.events({
               if (call=="call10min") { calltext='10 minutes.'; }
               if (call=="call5min") { calltext='5 minutes. Gear up.'; }
               if (call=="callGo") { calltext=' go to the plane.'; }
-              tts.speak('Load ' + load.loadnumber + ', ' + airplanecall + ', ' + calltext,'en');    // do something with result
+              if (call!="callNoCall") { tts.speak('Load ' + load.loadnumber + ', ' + airplanecall + ', ' + calltext,'en'); } 
+              return true;
             }
         });
     }
