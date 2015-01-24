@@ -2,8 +2,8 @@ Meteor.publish('dropzones', function() {
 	return Dropzones.find();
 });
 
-Meteor.publish('airplanes', function() {
-	return Airplanes.find();
+Meteor.publish('aircrafts', function() {
+	return Aircrafts.find();
 });
 
 Meteor.publish('rigs', function() {

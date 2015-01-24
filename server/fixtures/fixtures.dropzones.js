@@ -38,6 +38,7 @@ if (Dropzones.find().count() === 0) {
   Dropzones.insert({
     name: 'Skydive Jyväskylä',
     airfield: 'EFJY',
+    timezone: 'Europe/Helsinki',
     website: 'http://skydivejkl.fi',
     "coordinate" : { 
       "lat" : 62.244747, 
@@ -48,6 +49,7 @@ if (Dropzones.find().count() === 0) {
   Dropzones.insert({
     name: 'Skyxperience Malmi',
     airfield: 'EFHF',
+    timezone: 'Europe/Helsinki',
     website: 'http://4k.fi',
     "coordinate" : {
       "lat" : 60.250548, 
@@ -58,6 +60,7 @@ if (Dropzones.find().count() === 0) {
   Dropzones.insert({
     name: 'Skydive Finland',
     airfield: 'EFUT',
+    timezone: 'Europe/Helsinki',
     website: 'http://www.skydivefinland.fi',
     "coordinate" : {
       "lat" : 60.8960838, 
@@ -68,6 +71,7 @@ if (Dropzones.find().count() === 0) {
   Dropzones.insert({
     name: 'Tampereen Laskuvarjokerho',
     airfield: 'EFJM',
+    timezone: 'Europe/Helsinki',
     website: 'http://tamlk.fi',
     "coordinate" : {
       "lat" : 60.250548, 
@@ -78,6 +82,7 @@ if (Dropzones.find().count() === 0) {
     Dropzones.insert({
     name: 'Oulun Laskuvarjokerho',
     airfield: 'EFOU',
+    timezone: 'Europe/Helsinki',
     website: 'http://oulunlaskuvarjokerho.fi',
     "coordinate" : {
       "lat" : 64.9315981, 
@@ -88,6 +93,7 @@ if (Dropzones.find().count() === 0) {
   Dropzones.insert({
     name: 'Skydive Kemi',
     airfield: 'EFKE',
+    timezone: 'Europe/Helsinki',
     website: 'http://skydivekemi.fi',
     "coordinate" : {
       "lat" : 65.7815478,  
@@ -98,6 +104,7 @@ if (Dropzones.find().count() === 0) {
   Dropzones.insert({
     name: 'Alavuden Ilmailukerho',
     airfield: 'EFAL',
+    timezone: 'Europe/Helsinki',
     website: 'http://www.alavudenilmailukerho.com',
     "coordinate" : {
       "lat" : 62.5563897,  
@@ -108,6 +115,7 @@ if (Dropzones.find().count() === 0) {
   Dropzones.insert({
     name: 'Skydive Pori',
     airfield: 'EFPO',
+    timezone: 'Europe/Helsinki',
     website: 'http://satlu.fi',
     "coordinate" : {
       "lat" : 61.4702228, 
@@ -117,6 +125,7 @@ if (Dropzones.find().count() === 0) {
   Dropzones.insert({
     name: 'Hämeen Laskuvarjourheilijat',
     airfield: 'EFPO',
+    timezone: 'Europe/Helsinki',
     website: 'https://www.skydivehame.fi',
     "coordinate" : {
       "lat" : 61.143612, 
@@ -126,6 +135,7 @@ if (Dropzones.find().count() === 0) {
   Dropzones.insert({
     name: 'Kuopion Laskuvarjourheilijat',
     airfield: 'EFKU',
+    timezone: 'Europe/Helsinki',
     website: 'http://klu.fi',
     "coordinate" : {
       "lat" : 63.010038,  
@@ -135,6 +145,7 @@ if (Dropzones.find().count() === 0) {
   Dropzones.insert({
     name: 'Skydive Karjala',
     airfield: 'EFIM',
+    timezone: 'Europe/Helsinki',
     website: 'http://skydivekarjala.fi',
     "coordinate" : {
       "lat" : 61.249722, 
@@ -144,6 +155,7 @@ if (Dropzones.find().count() === 0) {
   Dropzones.insert({
     name: 'Skydive Oulu',
     airfield: 'EFOU',
+    timezone: 'Europe/Helsinki',
     website: 'http://skydiveoulu.fi',
     "coordinate" : {
       "lat" : 64.932872, 
@@ -153,6 +165,7 @@ if (Dropzones.find().count() === 0) {
   Dropzones.insert({
     name: 'Turun Laskuvarjourheilijat',
     airfield: 'EFTU',
+    timezone: 'Europe/Helsinki',
     website: 'http://skydiveturku.fi',
     "coordinate" : {
       "lat" : 60.5081408, 
@@ -162,6 +175,7 @@ if (Dropzones.find().count() === 0) {
   Dropzones.insert({
     name: 'Vaasan Laskuvarjokerho',
     airfield: 'EFVA',
+    timezone: 'Europe/Helsinki',
     website: 'http://vaasanlaskuvarjokerho.net',
     "coordinate" : {
       "lat" : 63.045779, 
