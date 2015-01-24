@@ -1,5 +1,5 @@
 <template name="loadPage">
-		    	<div class="panel panel-default">
+		    	<div class="panel panel-default">{{callbuttonstate}}
 				    <div class="panel-heading">
 					    <span class="pull-right">
 							{{#if useronload}}
@@ -14,21 +14,19 @@
 							    {{else}}
 							      {{#if freeslots}}
 							      	{{#if lightenough}}
-							      		<button type="button"  id="addJump-{{_id}}" class="addJump btn btn-success">{{loadstatus}}</button>
+							      		<button type="button"  id="addJump-{{_id}}" class="addJump btn btn-success">{{manifeststatus}}</button>
 							      	{{else}}
-							      		<button type="button" class="btn btn-success" disabled="disabled">{{loadstatus}}, but you are too fat</button>
+							      		<button type="button" class="btn btn-success" disabled="disabled">{{manifeststatus}}, but you are too fat</button>
 							      	{{/if}}
 							      {{else}}
-							      <button type="button" class="btn btn-default" disabled="disabled">{{loadstatus}}</button>
+							      <button type="button" class="btn btn-default" disabled="disabled">{{manifeststatus}}</button>
 							      {{/if}}
 							    {{/if}}
 						    {{/if}}
 						</span>
-				        <h2 class="panel-title"><a href="{{pathFor 'loadPage'}}">     
-					    Load {{loadnumber}} ({{aircraft.registration}} / {{aircraft.make}} {{aircraft.model}})</a></h2>
-					    {{#unless closed}}
-					    	Still can carry {{kilosleft}} kg more.<br>Created {{createtime}}.
-					    {{/unless}}
+				        <h3 class="panel-title"><a href="{{pathFor 'loadPage'}}">     
+					    Load {{loadnumber}} ({{aircraft.registration}} / {{aircraft.make}} {{aircraft.model}})</a></h3>
+				    	Still can carry {{kilosleft}} kg more.<br>Created {{createtime}}.
 				    </div>
 
 				  <!-- jump details section -->
@@ -55,6 +53,8 @@
 
 				    <div class="panel-body">
  						<img src="/img/pinnikey_onlypin.png?n" alt="{{registration}} {{make}} {{model}} image" align=right width=50 class="aircraftlist-img">
+ 						{{#if refuel}}<span class="pull-right label label-warning">Refuel after landing</span>{{/if}}
+ 						<span class="pull-right label label-primary">{{loadstatus}}</span>
 					    {{#if jumpers.length}} 
 					    	{{jumpers.length}} skydivers on board:
 					    {{else}}
@@ -64,23 +64,29 @@
 					     {{jumper.profile.firstName}} {{jumper.profile.lastName}}: {{type}} @ {{altitude}} <br>
 					    {{/each}}
 					</div>
-				    <div class="panel-heading"><span class="label label-default">Load status</span> <i class="fa fa-chevron-right"></i>
-				      <div class="btn-group" role="group">{{callbuttonstate}}
-						<button type="button" class="callchange btn btn-default" call="callNoCall" id="callNoCall-{{_id}}">No call</button>
-						<button type="button" class="callchange btn btn-default" call="call20min" id="call20min-{{_id}}">20 min</button>
-						<button type="button" class="callchange btn btn-default" call="call10min" id="call10min-{{_id}}">10 min</button>
-						<button type="button" class="callchange btn btn-default" call="call5min" id="call5min-{{_id}}">5 min</button>
-						<button type="button" class="callchange btn btn-default" call="callGo" id="callGo-{{_id}}">Go</button>
-					  </div>
-				    <i class="fa fa-chevron-right"></i>
-				      <div class="btn-group" role="group">
-						<button type="button" class="peopleOnBoard btn btn-default" id="peopleOnBoard-{{_id}}">Loaded</button>
-						<button type="button" class="takeOff btn btn-success" id="takeOff-{{_id}}">Takeoff</button>
-						<button type="button" class="jumprunDrop btn btn-default" id="jumprunDrop-{{_id}}">Drop</button>
-						<button type="button" class="comingDown btn btn-default" id="comingDown-{{_id}}">Coming down</button>
-					  </div>
-					  	<button type="button" class="gasNeeded btn btn-warning" id="gasNeeded-{{_id}}">Tank</button>
+					<br>
+					<div class="panel-body">
+						<div class="col-md-6 col-xs-6"><h4>Ground</h4>
+					      <div class="btn-group-vertical col-md-12 col-xs-12">{{callbuttonstate}}
+							<button type="button" class="statuschange btn btn-default" status="callNoCall" id="callNoCall-{{_id}}">No call</button>
+							<button type="button" class="statuschange btn btn-default" status="call20min" id="call20min-{{_id}}">20 min</button>
+							<button type="button" class="statuschange btn btn-default" status="call10min" id="call10min-{{_id}}">10 min</button>
+							<button type="button" class="statuschange btn btn-default" status="call5min" id="call5min-{{_id}}">5 min</button>
+							<button type="button" class="statuschange btn btn-default" status="callGo" id="callGo-{{_id}}">Go</button>
+						  </div>
+					    </div>
+					    <div class="col-md-6 col-xs-6"><h4>Air (pilot controls)</h4>
+					      <div class="btn-group-vertical col-md-12 col-xs-12">
+							<button type="button" class="statuschange btn btn-default" status="loaded" id="loaded-{{_id}}">Loaded</button>
+							<button type="button" class="statuschange btn btn-default" status="takeOff" id="takeOff-{{_id}}">Takeoff</button>
+							<button type="button" class="statuschange btn btn-default" status="jumpRunDrop" id="jumpRunDrop-{{_id}}">Drop</button>
+							<button type="button" class="statuschange btn btn-default" status="descend" id="descend-{{_id}}">Descending</button>
+							<button type="button" class="statuschange btn btn-default" status="landed" id="landed-{{_id}}">Landed</button>
+						  </div>
+						</div>
+						  <div class="btn-group-vertical col-md-12 col-xs-12">
+						    <button type="button" class="refuel btn btn-default" id="reFuel-{{_id}}">Refuel needed{{refuelstate}}</button>
+						  </div>
+					    </div>
 				    </div>
-
-				</div>
 </template>
