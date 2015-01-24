@@ -1,6 +1,6 @@
-Template.airplanePage.helpers({ 
+Template.aircraftPage.helpers({ 
  dropzones: function() {
-	return Dropzones.find({airplanes: {id: this._id}}).fetch();
+	return Dropzones.find({aircrafts: {id: this._id}}).fetch();
 	}
 });
 

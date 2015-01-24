@@ -1,5 +1,5 @@
-Template.airplaneItem.helpers({ 
- airplane: function(id) {
-	return Airplanes.findOne(this.id);
+Template.aircraftItem.helpers({ 
+ aircraft: function(id) {
+	return Aircrafts.findOne(this.id);
 	}
 });
