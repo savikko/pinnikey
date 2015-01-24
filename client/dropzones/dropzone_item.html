@@ -1,11 +1,26 @@
 <template name="dropzoneItem">
-  <div class="dropzone">
-    <div class="dropzone-content">
-      <h3><a href="{{url}}">{{name}}</a><span>{{airfield}}</span></h3>
-      <p>
-        Dropzone Info here.<br>   
-        {{#if ownDropzone}}<a href="{{pathFor 'postEdit'}}">Edit</a>{{/if}}
-      </p>
-    </div>
-  </div>
+  <div class="col-md-4 col-sm-6 col-xs-12">
+		    	<div class="panel panel-default"> 
+					<div class="panel-heading">
+				    <h3 class="panel-title"><a href="{{pathFor 'dropzonePage'}}">     
+					    {{name}}</a></h3>
+					</div>
+					<div class="panel-body">
+						
+						<img src="/img/pinnikey_onlypin.png?n" alt="{{name}} logo" align=right width=50 class="dropzonelist-img">	     
+					    {{#if website}}
+					    	<i class="fa fa-angle-double-right"></i> <a target=_new href={{website}}>Website</a><br>
+					    	{{/if}}
+					    
+					    {{#if facebook}}
+					    	<i class="fa fa-facebook-square"></i> <a target=_new href={{website}}>Facebook page</a><br>
+					    	{{/if}}
+					  	
+					  	Operating at {{airfield}}.					
+						
+						<br>
+					    <i class="fa fa-edit"></i> <a href="{{pathFor 'editDropzone'}}">Edit dropzone</a>
+					</div>
+				</div>
+			</div>
 </template>
