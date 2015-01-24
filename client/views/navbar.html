@@ -51,10 +51,10 @@
             {{#each airplanes}}
                 <li><a href="{{pathFor 'airplanePage'}}">{{registration}} ({{make}} {{model}})</a></li>
             {{/each}}
-    {{#if isInRole 'admin'}}
+  <!--  {{#if isInRole 'admin'}} -->
                 <li class="divider"></li>
                 <li><a href="{{pathFor 'newAirplane'}}">Add your airplane</a></li>
-    {{/if}}
+  <!--  {{/if}} -->
           </ul>
          </li>
 {{/if}}
