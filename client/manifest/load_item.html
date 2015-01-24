@@ -3,10 +3,14 @@
 				    <div class="panel-heading">
 					    <span class="pull-right">
 							{{#if useronload}}
-								<button type="button" class="btn btn-danger" id="cancelJump">Cancel</button>
+								{{#if closed}}
+								  {{jumpers.length}} skydivers on board, including you.
+								{{else}}
+								  <button type="button" class="btn btn-danger" id="cancelJump">Cancel</button>
+								{{/if}}
 							{{else}}
 							    {{#if closed}}
-							      <button type="button" class="btn btn-default" disabled="disabled">{{loadstatus}}</button>
+							      {{jumpers.length}} skydivers on board.
 							    {{else}}
 							      {{#if freeslots}}
 							      	{{#if lightenough}}
@@ -20,9 +24,11 @@
 							    {{/if}}
 						    {{/if}}
 						</span>
-				        <h3 class="panel-title"><a href="{{pathFor 'airplanePage'}}">     
+				        <h3 class="panel-title"><a href="{{pathFor 'loadPage'}}">     
 					    Load {{loadnumber}} ({{airplane.registration}} / {{airplane.make}} {{airplane.model}})</a></h3>
-					    Still can carry {{kilosleft}} kg more.<br>Created {{createtime}}.
+					    {{#unless closed}}
+					    	Still can carry {{kilosleft}} kg more.<br>Created {{createtime}}.
+					    {{/unless}}
 				    </div>
 
 				  <!-- jump details section -->
@@ -46,7 +52,7 @@
 						</form>
 				    </div>
 				  <!-- jump details section ends -->
-
+				  	{{#unless closed}}
 				    <div class="panel-body">
  						<img src="/img/pinnikey_onlypin.png?n" alt="{{registration}} {{make}} {{model}} image" align=right width=50 class="airplanelist-img">
 					    {{#if jumpers.length}} 
@@ -58,6 +64,7 @@
 					     {{jumper.profile.firstName}} {{jumper.profile.lastName}}: {{type}} @ {{altitude}} <br>
 					    {{/each}}
 					</div>
+					{{/unless}}
 
 				    <div class="panel-heading" id="loadmanage-{{_id}}" style="display: block;"> 
 				      <div class="btn-group btn-group-sm" role="group">{{callbuttonstate}}
