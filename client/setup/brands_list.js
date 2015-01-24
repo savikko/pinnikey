@@ -1,4 +1,6 @@
 
+
+
 Template.brandsList.events({
     'click #new': function(event) {
         alert("New");
@@ -6,6 +8,7 @@ Template.brandsList.events({
 });
 
 Template.brandsList.helpers({ 
+
 	brands: function() {
 		return Brands.find()
 	}

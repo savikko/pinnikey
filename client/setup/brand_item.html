@@ -1,18 +1,25 @@
 <template name="brandItem">
 
-	<div class="panel panel-default">
-    	<div class="panel-body">
-      		<h3><a href="{{url}}">{{title}}</a><span>{{domain}}</span></h3>
-      		<p>
-        		submitted by {{author}}
+    <div class="col-md-4 col-sm-6 col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><a href="{{domain}}">    
 
-        		<a href="{{pathFor 'postPage'}}">{{commentsCount}} comments</a>
+              {{name}}<br>{{#if url}}{{domain}}{{/if}}</a></h3>
+          </div>
+          <div class="panel-body">
+            <img src="/img/pinnikey_onlypin.png?n" align=right width=50 class="airplanelist-img">
+              Info: {{brandInfo}}<br>
+              Makes: a bunch of stuff<br>
 
-        		{{#if true}}<a href="{{pathFor 'postEdit'}}">Edit</a>{{/if}}
-      		</p>
-    		</div>
-      	<a href="{{pathFor 'postPage'}}" class="discuss btn btn-default">Discuss</a>
-  	</div>
+
+                      
+            
+            <br>
+              <i class="fa fa-edit"></i> <a href="{{pathFor 'editAirplane'}}">Edit</a>
+          </div>
+        </div>
+    </div>
 
 
 </template>
