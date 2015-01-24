@@ -8,9 +8,9 @@
 		    {{#each brands}}
 		    	{{> brandItem}}
 		    {{/each}}
-		    <button type="button" id="new" class="btn btn-default btn-lg" aria-label="Left Align">
-				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New
-			</button>
+		    <a href="{{pathFor 'brandNew'}}" type="button" id="new" class="btn btn-default btn-lg" aria-label="Left Align">
+				<span class="fa fa-plus" aria-hidden="true"></span> New
+			</a>
     </div>
 </template>
 
