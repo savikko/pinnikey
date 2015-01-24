@@ -137,40 +137,27 @@ Template.loadItem.events({
         return Meteor.call("addSkydiverToLoad", load, altitude, type);
         //Meteor.call
     },
-    'click .callNoCall': function(event) {
+    'click .callchange': function(event) {
         event.stopPropagation();
-        load = this._id; //load id
-        return Meteor.call("loadCall", load, 'callNoCall');
-    },
-    'click .call20min': function(event) {
-        event.stopPropagation();
-        load = this._id; //load id
+        loadid = this._id; //load id
+        load = this; // load object for subfunctions
+        call = $(event)[0].target.attributes.call.value; // is there some more sophisticated way to get call value from button?
         airplanecall = Airplanes.findOne(this.airplane).registration.slice(-2).split('').join('');
-        console.log(airplanecall);
-        tts.speak('Load ' + this.loadnumber + ', ' + airplanecall + ', 20 minutes.','en');
-        return Meteor.call("loadCall", load, 'call20min');
-    },
-    'click .call10min': function(event) {
-        event.stopPropagation();
-        load = this._id; //load id
-        airplanecall = Airplanes.findOne(this.airplane).registration.slice(-2).split('').join('');
-        tts.speak('Load ' + this.loadnumber + ', ' + airplanecall + ', 10 minutes.','en');
-        return Meteor.call("loadCall", load, 'call10min');
-    },
-    'click .call5min': function(event) {
-        event.stopPropagation();
-        load = this._id; //load id
-        airplanecall = Airplanes.findOne(this.airplane).registration.slice(-2).split('').join('');
-        tts.speak('Load ' + this.loadnumber + ', ' + airplanecall + ', 5 minutes. Gear up!','en');
-        return Meteor.call("loadCall", load, 'call5min');
-    },
-    'click .callGo': function(event) {
-        event.stopPropagation();
-        load = this._id; //load id
-        airplanecall = Airplanes.findOne(this.airplane).registration.slice(-2).split('').join('');
-        tts.speak('Load ' + this.loadnumber + ', ' + airplanecall + ', go to the plane!','en');
-        return Meteor.call("loadCall", load, 'callGo');
-    } 
+        Meteor.call("loadCall", loadid, call,function(error,result){
+            if(error){
+              console.log(error.reason);
+            }
+            else{
+              calltext='';
+              console.log(call);
+              if (call=="call20min") { calltext='20 minutes.'; }
+              if (call=="call10min") { calltext='10 minutes.'; }
+              if (call=="call5min") { calltext='5 minutes. Gear up.'; }
+              if (call=="callGo") { calltext=' go to the plane.'; }
+              tts.speak('Load ' + load.loadnumber + ', ' + airplanecall + ', ' + calltext,'en');    // do something with result
+            }
+        });
+    }
 });
 
 Template.loadItem.rendered = function(){
