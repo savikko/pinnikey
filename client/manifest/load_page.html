@@ -1,0 +1,92 @@
+<template name="loadPage">
+		    	<div class="panel panel-default">
+				    <div class="panel-heading">
+					    <span class="pull-right">
+							{{#if useronload}}
+								{{#if closed}}
+								  {{jumpers.length}} skydivers on board, including you.
+								{{else}}
+								  <button type="button" class="btn btn-danger" id="cancelJump">Cancel</button>
+								{{/if}}
+							{{else}}
+							    {{#if closed}}
+							      {{jumpers.length}} skydivers on board.
+							    {{else}}
+							      {{#if freeslots}}
+							      	{{#if lightenough}}
+							      		<button type="button"  id="addJump-{{_id}}" class="addJump btn btn-success">{{loadstatus}}</button>
+							      	{{else}}
+							      		<button type="button" class="btn btn-success" disabled="disabled">{{loadstatus}}, but you are too fat</button>
+							      	{{/if}}
+							      {{else}}
+							      <button type="button" class="btn btn-default" disabled="disabled">{{loadstatus}}</button>
+							      {{/if}}
+							    {{/if}}
+						    {{/if}}
+						</span>
+				        <h3 class="panel-title"><a href="{{pathFor 'loadPage'}}">     
+					    Load {{loadnumber}} ({{airplane.registration}} / {{airplane.make}} {{airplane.model}})</a></h3>
+					    {{#unless closed}}
+					    	Still can carry {{kilosleft}} kg more.<br>Created {{createtime}}.
+					    {{/unless}}
+				    </div>
+
+				  <!-- jump details section -->
+				    <div class="panel-heading" id="jumpdetails-{{_id}}" style="display: none;">
+				  		<form>
+								New jump: <select id="type-{{_id}}">
+								  <option></option>
+								  <option value="Free">Free</option>
+								  <option value="FS">FS</option>
+								  <option value="CP">CP</option>
+								  <option value="CF">CF</option>
+								</select>
+								<select id="altitude-{{_id}}">
+								  <option></option>
+								  <option value="1000">1000m</option>
+								  <option value="2000">2000m</option>
+								  <option value="3000">3000m</option>
+								  <option value="4000">4000m</option>
+								</select>
+								<button type="button" class="btn btn-success pull-right" id="confirmJump">Manifest</button>
+						</form>
+				    </div>
+				  <!-- jump details section ends -->
+				  	{{#unless closed}}
+				    <div class="panel-body">
+ 						<img src="/img/pinnikey_onlypin.png?n" alt="{{registration}} {{make}} {{model}} image" align=right width=50 class="airplanelist-img">
+					    {{#if jumpers.length}} 
+					    	{{jumpers.length}} skydivers on board:
+					    {{else}}
+					    	Empty load 
+ 					   	{{/if}}<br>
+					    {{#each jumpers}}
+					     {{jumper.profile.firstName}} {{jumper.profile.lastName}}: {{type}} @ {{altitude}} <br>
+					    {{/each}}
+					</div>
+					{{/unless}}
+
+				    <div class="panel-heading" id="loadmanage-{{_id}}" style="display: block;"> 
+				      <div class="btn-group" role="group">{{callbuttonstate}}
+						<button type="button" class="callchange btn btn-default" call="callNoCall" id="callNoCall-{{_id}}">No call</button>
+						<button type="button" class="callchange btn btn-default" call="call20min" id="call20min-{{_id}}">20 min</button>
+						<button type="button" class="callchange btn btn-default" call="call10min" id="call10min-{{_id}}">10 min</button>
+						<button type="button" class="callchange btn btn-default" call="call5min" id="call5min-{{_id}}">5 min</button>
+						<button type="button" class="callchange btn btn-default" call="callGo" id="callGo-{{_id}}">Go</button>
+					  </div>
+					  <i class="fa fa-chevron-left"></i> Ground controls
+				    </div>
+
+				    <div class="panel-heading" id="pilotfunctions-{{_id}}" style="display: block;">
+				      <div class="btn-group" role="group">
+						<button type="button" class="peopleOnBoard btn btn-default" id="peopleOnBoard-{{_id}}">Skydivers in</button>
+						<button type="button" class="takeOff btn btn-success" id="takeOff-{{_id}}">Takeoff</button>
+						<button type="button" class="jumprunDrop btn btn-default" id="jumprunDrop-{{_id}}">Drop</button>
+						<button type="button" class="comingDown btn btn-default" id="comingDown-{{_id}}">Coming down</button>
+					  </div>
+					  	<button type="button" class="gasNeeded btn btn-warning" id="gasNeeded-{{_id}}">Tank</button>
+					   <i class="fa fa-chevron-left"></i> Pilot controls
+				    </div>
+
+				</div>
+</template>
