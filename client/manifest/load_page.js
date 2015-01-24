@@ -79,16 +79,18 @@ Template.loadPage.helpers({
   	return manifeststatus;
   },
   loadstatus: function(){
-    if(this.status=='callNoCall' || status=='') { statustext='No call'};
-    if(this.status=='call20min') { statustext='20 minutes call'};
-    if(this.status=='call10min') { statustext='10 minutes call'};
-    if(this.status=='call5min') { statustext='5 minutes call - Gear up!'};  
-    if(this.status=='callGo') { statustext='Boarding - Go!'};
-    if(this.status=='loaded') { statustext='Taxiing'};
-    if(this.status=='takeOff') { statustext='Take off'};
-    if(this.status=='jumpRunDrop') { statustext='Dropped'};
-    if(this.status=='descend') { statustext='Descending'};
-    if(this.status=='landed') { statustext='Landed'};
+    loadstatus=Loads.findOne(this._id).status;
+    console.log(loadstatus);
+    if(loadstatus=='callNoCall' || typeof loadstatus == 'undefined') { statustext='No call'};
+    if(loadstatus=='call20min') { statustext='20 minutes call'};
+    if(loadstatus=='call10min') { statustext='10 minutes call'};
+    if(loadstatus=='call5min') { statustext='5 minutes call - Gear up!'};  
+    if(loadstatus=='callGo') { statustext='Boarding - Go!'};
+    if(loadstatus=='loaded') { statustext='Taxiing'};
+    if(loadstatus=='takeOff') { statustext='Take off'};
+    if(loadstatus=='jumpRunDrop') { statustext='Dropped'};
+    if(loadstatus=='descend') { statustext='Descending'};
+    if(loadstatus=='landed') { statustext='Landed'};
     return statustext;
   },
   total_weight: function(){
