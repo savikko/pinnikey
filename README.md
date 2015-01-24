@@ -47,10 +47,10 @@ Currently there are following "main" collections:
   * Gear linked to user with managers -object
 * Logbook
   * Logbook is linked to user with createdBy
-* Airplanes
-  * List of airplanes, including weight/maxjumpers data
+* Aircrafts
+  * List of aircrafts, including weight/maxjumpers data
 * Dropzones
-  * List of dropzones, including geolocation data. Linked to users (as managers) and airplanes.
+  * List of dropzones, including geolocation data. Linked to users (as managers) and aircrafts.
 * Loads
   * List of loads, currently every load has dropzone and aircraft info, and (auto)increment value for load number by date. One document is one load.
 
@@ -64,7 +64,7 @@ If should be able to mark himself/herself as a pilot also.
 
 ##Registration to dropzone
 
-User should be able to registrate to dropzone, reading all the documents dropzone managers want new skydivers to read. There may be documents regarding airplane (loading instructions, door opening instructions) or dropzone (landing zone instructions etc).
+User should be able to registrate to dropzone, reading all the documents dropzone managers want new skydivers to read. There may be documents regarding aircraft (loading instructions, door opening instructions) or dropzone (landing zone instructions etc).
 When user registrates to dropzone, dropzone manager should next do some kind of authorization which includes checking his/her logbook and rig status.
 There may be (historical reasons) dropzone-specific accounts for skydivers. Used usually for reporting/accounting.
 

@@ -1,5 +1,5 @@
-Template.airplanesList.helpers({
-  airplanes: function() {
-   return Airplanes.find();
+Template.aircraftsList.helpers({
+  aircrafts: function() {
+   return Aircrafts.find();
   }
 });

@@ -17,12 +17,12 @@
 	</div>
 	<div class="container">
 	  {{#if onePlane}}
-	   <h3>Airplane</h3>
-	   <p>This is our airplane:</p>
+	   <h3>Aircraft</h3>
+	   <p>This is our aircraft:</p>
 	  <div id="row row-centered">
-	  {{#each airplanes}}
+	  {{#each aircrafts}}
 	  	<div class="col-md-12 col-sm-12 col-xs-12 col-centered">
-		   {{> airplaneItem}}
+		   {{> aircraftItem}}
 		</div>
 	  {{/each}}
 	  </div>
@@ -30,11 +30,11 @@
 
 	  {{#if moreThanOnePlane}}
 	  <h3>Fleet</h3>
-	  	   <p>We have {{countAirplanes}} airplanes on our fleet:</p>
+	  	   <p>We have {{countAircrafts}} aircrafts on our fleet:</p>
 		 <div id="row row-centered">
-			  {{#each airplanes}}
+			  {{#each aircrafts}}
 			  	<div class="col-md-6 col-sm-12 col-xs-12 col-centered">
-				   {{> airplaneItem}}
+				   {{> aircraftItem}}
 				</div>
 			  {{/each}}
 			  </div>

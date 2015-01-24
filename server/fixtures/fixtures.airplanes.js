@@ -1,5 +1,5 @@
-if (Airplanes.find().count() === 0) {
-  Airplanes.insert({
+if (Aircrafts.find().count() === 0) {
+  Aircrafts.insert({
     registration: 'OH-CHQ',
     make: 'Cessna',
     model: '182',
@@ -7,7 +7,7 @@ if (Airplanes.find().count() === 0) {
     maxaltitude: '4000',
     maxjumpers: 4
   });
-  Airplanes.insert({
+  Aircrafts.insert({
     registration: 'OH-CEW',
     make: 'Cessna',
     model: '172',

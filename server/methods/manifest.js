@@ -15,11 +15,11 @@ Meteor.methods({
     Loads.update({_id: load},{$pull:{jumpers: jump}});
     return true;
   },
-  addNewLoad: function (dz,airplane) {
+  addNewLoad: function (dz,aircraft) {
     user =  Meteor.users.findOne(this.userId);
     dzobj = Dropzones.findOne(dz);
     startofday = new Date(moment().tz(dzobj.timezone).startOf('day').toISOString());
-    lastLoad = Loads.findOne({dropzone: dz, "airplane" : airplane, date: {$gte: startofday}},{sort: {loadnumber: -1}});
+    lastLoad = Loads.findOne({dropzone: dz, "aircraft" : aircraft, date: {$gte: startofday}},{sort: {loadnumber: -1}});
     if (lastLoad) {
       console.log('Found one load');
       nextLoad = lastLoad.loadnumber+1;
@@ -31,7 +31,7 @@ Meteor.methods({
 
     Loads.insert({
     dropzone: dz,
-    airplane: airplane,
+    aircraft: aircraft,
     loadnumber: nextLoad,
     createdBy: this.userId,
     closed: false,

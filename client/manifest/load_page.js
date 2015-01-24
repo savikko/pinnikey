@@ -1,17 +1,18 @@
 Template.loadPage.helpers({
   callbuttonstate: function() {
+    console.log(this.status + '-' + this._id);
     var activeCallButton = document.getElementById(this.status + '-' + this._id);
     $(activeCallButton).addClass("btn-success").siblings().removeClass('btn-success');
     return;
   },
-  airplanebuttonstate: function() {
-    var activeAirplaneButton = document.getElementById(this.airplanestatus);
+  aircraftbuttonstate: function() {
+    var activeAircraftButton = document.getElementById(this.aircraftstatus);
     $(activeAirlaneButton).addClass("btn-success").siblings().removeClass('btn-success');
     return;
   },
-  airplane: function() {
-  	airplane = Airplanes.findOne({_id: this.airplane});
-	return airplane;
+  aircraft: function() {
+  	aircraft = Aircrafts.findOne({_id: this.aircraft});
+	return aircraft;
 	},
   createtime: function() {
     return moment.tz(this.date,"GMT").fromNow();
@@ -28,7 +29,7 @@ Template.loadPage.helpers({
     } 
   },
   freeslots: function() {
-  	slotsavailable = Airplanes.findOne({_id: this.airplane}).maxjumpers;
+  	slotsavailable = Aircrafts.findOne({_id: this.aircraft}).maxjumpers;
   	if (Loads.findOne(this._id).jumpers.length) {
   		slotsused = Loads.findOne(this._id).jumpers.length;
   	}
@@ -45,7 +46,7 @@ Template.loadPage.helpers({
   	}
     },
   loadstatus: function(id) {
-  	slotsavailable = Airplanes.findOne({_id: this.airplane}).maxjumpers;
+  	slotsavailable = Aircrafts.findOne({_id: this.aircraft}).maxjumpers;
   	if (Loads.findOne(this._id).jumpers.length) {
   		slotsused = Loads.findOne(this._id).jumpers.length;
   	}
@@ -75,13 +76,13 @@ Template.loadPage.helpers({
   kilosleft: function(){
   	var weights = _.map(Loads.findOne(this._id).jumpers,function (value){ return value.weight; }); // get weights to array
   	var totalweight = _.reduce(weights, function(memo, num){ return memo + num; }, 0); // sum array of weights to one variable
-  	var usableweight = Airplanes.findOne({_id: this.airplane}).usableweight_forskydivers;
+  	var usableweight = Aircrafts.findOne({_id: this.aircraft}).usableweight_forskydivers;
   	return usableweight-totalweight;
   },
   lightenough: function(){
   	var weights = _.map(Loads.findOne(this._id).jumpers,function (value){ return value.weight; }); // get weights to array
   	var totalweight = _.reduce(weights, function(memo, num){ return memo + num; }, 0); // sum array of weights to one variable
-  	var usableweight = Airplanes.findOne({_id: this.airplane}).usableweight_forskydivers;
+  	var usableweight = Aircrafts.findOne({_id: this.aircraft}).usableweight_forskydivers;
   	var skydiverweight = Meteor.user().profile.weight;
   	if (usableweight-totalweight-skydiverweight>0) {
   		return true;
@@ -142,7 +143,7 @@ Template.loadPage.events({
         loadid = this._id; //load id
         load = this; // load object for subfunctions
         call = $(event)[0].target.attributes.call.value; // is there some more sophisticated way to get call value from button?
-        airplanecall = Airplanes.findOne(this.airplane).registration.slice(-2).split('').join('');
+        aircraftcall = Aircrafts.findOne(this.aircraft).registration.slice(-2).split('').join('');
         Meteor.call("loadCall", loadid, call,function(error,result){
             if(error){
               console.log(error.reason);
@@ -154,7 +155,7 @@ Template.loadPage.events({
               if (call=="call10min") { calltext='10 minutes.'; }
               if (call=="call5min") { calltext='5 minutes. Gear up.'; }
               if (call=="callGo") { calltext=' go to the plane.'; }
-              tts.speak('Load ' + load.loadnumber + ', ' + airplanecall + ', ' + calltext,'en');    // do something with result
+              tts.speak('Load ' + load.loadnumber + ', ' + aircraftcall + ', ' + calltext,'en');    // do something with result
             }
         });
     }
