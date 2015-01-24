@@ -44,17 +44,17 @@
          </li>
 
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Airplanes<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Aircrafts<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="{{pathFor 'airplanesList'}}">All airplanes</a></li>
+            <li><a href="{{pathFor 'aircraftsList'}}">All aircrafts</a></li>
             <li class="divider"></li>
-            {{#each airplanes}}
-                <li><a href="{{pathFor 'airplanePage'}}">{{registration}} ({{make}} {{model}})</a></li>
+            {{#each aircrafts}}
+                <li><a href="{{pathFor 'aircraftPage'}}">{{registration}} ({{make}} {{model}})</a></li>
             {{/each}}
-    {{#if isInRole 'admin'}}
+  <!--  {{#if isInRole 'admin'}} -->
                 <li class="divider"></li>
-                <li><a href="{{pathFor 'newAirplane'}}">Add your airplane</a></li>
-    {{/if}}
+                <li><a href="{{pathFor 'newAircraft'}}">Add your aircraft</a></li>
+  <!--  {{/if}} -->
           </ul>
          </li>
 {{/if}}

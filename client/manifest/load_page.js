@@ -1,5 +1,6 @@
-Template.loadItem.helpers({
+Template.loadPage.helpers({
   callbuttonstate: function() {
+    console.log(this.status + '-' + this._id);
     var activeCallButton = document.getElementById(this.status + '-' + this._id);
     $(activeCallButton).addClass("btn-success").siblings().removeClass('btn-success');
     return;
@@ -92,7 +93,7 @@ Template.loadItem.helpers({
   }
 });
 
-Template.loadItem.events({
+Template.loadPage.events({
     'click #cancelJump': function(event) {
         event.stopPropagation();
         load = this._id;
@@ -146,7 +147,6 @@ Template.loadItem.events({
         Meteor.call("loadCall", loadid, call,function(error,result){
             if(error){
               console.log(error.reason);
-              return false;
             }
             else{
               calltext='';
@@ -155,19 +155,8 @@ Template.loadItem.events({
               if (call=="call10min") { calltext='10 minutes.'; }
               if (call=="call5min") { calltext='5 minutes. Gear up.'; }
               if (call=="callGo") { calltext=' go to the plane.'; }
-              if (call!="callNoCall") { tts.speak('Load ' + load.loadnumber + ', ' + aircraftcall + ', ' + calltext,'en'); } 
-              return true;
+              tts.speak('Load ' + load.loadnumber + ', ' + aircraftcall + ', ' + calltext,'en');    // do something with result
             }
         });
     }
 });
-
-Template.loadItem.rendered = function(){
-  $("#type-" + this._id).select2({
-      placeholder: "Select type of jump"
-  });
-  $("#altitude-" + this._id).select2({
-      placeholder: "Select an altitude"
-  });
-  
-};

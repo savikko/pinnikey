@@ -1,6 +1,6 @@
 Meteor.subscribe('dropzones');
 
-Meteor.subscribe('airplanes');
+Meteor.subscribe('aircrafts');
 
 Meteor.subscribe('logbook');
 
@@ -19,6 +19,7 @@ $(document).on('click','.navbar-collapse.in',function(e) {
         $(this).collapse('hide');
     }
 });
+
 
 UI.registerHelper('say', function (){
 	var saytext = '';
