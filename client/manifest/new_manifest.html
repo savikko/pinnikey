@@ -8,15 +8,16 @@
 			<h3>{{registration}} ({{make}}  {{model}})</h3>
 				<button type="button" class="btn btn-default" id="addNewLoad">Add new load {{registration}} ({{make}}
 				  {{model}})</button>
-				  		<br><br>
-				  	Open loads
+				  	  <h4>Open loads</h4>
 						{{#each openloads _id}}
 							  	{{> loadItem}}
 						{{/each}}
-				  	Closed loads
+
+				  	  <h4>Closed loads</h4>
 						{{#each closedloads _id}}
 					  		{{> loadItem}}
 						{{/each}}
+
 			</div>
 		{{/each}}
 		<hr>
