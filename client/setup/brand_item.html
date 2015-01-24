@@ -3,7 +3,7 @@
     <div class="col-md-4 col-sm-6 col-xs-12">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title"><a href="{{domain}}">    
+            <h3 class="panel-title"><a href="{{url}}">    
 
               {{name}}<br>{{#if url}}{{domain}}{{/if}}</a></h3>
           </div>
@@ -16,7 +16,7 @@
                       
             
             <br>
-              <i class="fa fa-edit"></i> <a id="edit" href="">Edit</a>
+              <i class="fa fa-edit"></i> <a id="edit" href="{{pathFor 'brandEdit'}}">Edit</a>
           </div>
         </div>
     </div>

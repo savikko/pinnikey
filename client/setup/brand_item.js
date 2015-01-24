@@ -30,9 +30,4 @@ Template.brandItem.helpers({
 
 });
 
-Template.brandItem.events({
-	'click #edit': function(event) {
-	    alert("Edit");
-	}
 
-});

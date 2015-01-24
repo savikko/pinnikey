@@ -3,7 +3,7 @@
 
 Template.brandsList.events({
     'click #new': function(event) {
-        alert("New");
+        
     },
 });
 
