@@ -1,0 +1,20 @@
+<template name="brandsList">
+
+	<div class="container">	 
+		<button type="button" id="new" class="btn btn-default btn-lg" aria-label="Left Align">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New
+		</button>
+	</div>
+
+	<div></div>
+
+	<div class="container">
+
+		{{#each brands}}
+	      {{> brandItem}}
+		{{/each}}
+
+	</div>
+	
+
+</template>

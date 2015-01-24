@@ -23,3 +23,7 @@ Meteor.publish('users', function(userIds) {
 Meteor.publish('loads', function(dz) {
   return Loads.find({dropzone: dz});
 });
+
+Meteor.publish('brands', function(){
+	return Brands.find();
+});

@@ -5,10 +5,14 @@ Template.newManifest.helpers({
 	return airplanes;
   },
   openloads: function(airplane) {
-   return Loads.find({airplane: airplane, date: {$gte: moment().startOf('day')._d}, closed: false},{sort: {loadnumber: -1}});
+   dztz = Dropzones.findOne(Meteor.user().profile.currentdz).timezone;
+   startofday = new Date(moment().tz(dztz).startOf('day').toISOString());
+   return Loads.find({airplane: airplane, date: {$gte: startofday}, closed: false},{sort: {loadnumber: -1}});
   },
   closedloads: function(airplane) {
-   return Loads.find({airplane: airplane, date: {$gte: moment().startOf('day')._d}, closed: true},{sort: {loadnumber: -1}});
+   dztz = Dropzones.findOne(Meteor.user().profile.currentdz).timezone;
+   startofday = new Date(moment().tz(dztz).startOf('day').toISOString()); // find start of the day using dropzone's timezone
+   return Loads.find({airplane: airplane, date: {$gte: startofday}, closed: true},{sort: {loadnumber: -1}});
   },
   prettifyDate: function(timestamp) {
     return moment(new Date(timestamp)).format('DD.MM.YYYY');

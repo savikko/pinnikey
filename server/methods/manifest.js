@@ -17,15 +17,18 @@ Meteor.methods({
   },
   addNewLoad: function (dz,airplane) {
     user =  Meteor.users.findOne(this.userId);
-    lastLoad = Loads.findOne({dropzone: dz, "airplane" : airplane, date: {$gte: moment().startOf('day')._d}},{sort: {loadnumber: -1}});
+    dzobj = Dropzones.findOne(dz);
+    startofday = new Date(moment().tz(dzobj.timezone).startOf('day').toISOString());
+    lastLoad = Loads.findOne({dropzone: dz, "airplane" : airplane, date: {$gte: startofday}},{sort: {loadnumber: -1}});
     if (lastLoad) {
-      console.log('found!');
+      console.log('Found one load');
       nextLoad = lastLoad.loadnumber+1;
     }
-    else {
+    else { // we didn't find any loads for today
       console.log('not found!');
       nextLoad = 1;
     };
+
     Loads.insert({
     dropzone: dz,
     airplane: airplane,
@@ -33,9 +36,21 @@ Meteor.methods({
     createdBy: this.userId,
     closed: false,
     jumpers: [],
-    pilot: "mNQc66f42TYSboGLQ"
+    pilot: "mNQc66f42TYSboGLQ" // static for development purposes for now..
      });
     return true;
   },
 
+  // Load statuses
+  loadCall: function (load,call) {
+    console.log('Change in call:');
+    console.log(load + ' call ' + call);
+    if (call=='call5min' || call=='callGo') {
+      closedstate = true;
+    } else {
+      closedstate = false;
+    }
+    Loads.update({_id: load},{$set: {status: call, closed: closedstate}});
+    return true;
+  },
 });
