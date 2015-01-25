@@ -1,4 +1,10 @@
 Template.loadPage.helpers({
+  //Geolocation:
+  lat: function() { return Session.get('lat'); },
+  lon: function() { return Session.get('lon'); },
+  alt: function() { return Math.round(Session.get('alt')) + ' m ASL'; },
+  speed: function() { return Math.round(Session.get('speed')) + ' m/s'; },
+  //Others
   callbuttonstate: function() {
     var activeCallButton = document.getElementById(this.status + '-' + this._id);
     $(activeCallButton).addClass("btn-success").siblings().removeClass('btn-success');
@@ -192,6 +198,32 @@ Template.loadPage.events({
     }
 });
 
+// Geolocation usage (for pilot)
+
+var options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0
+};
+
+function success(position) {
+  Session.set('lat', position.coords.latitude);
+  Session.set('lon', position.coords.longitude);
+  Session.set('alt', position.coords.altitude); 
+  Session.set('speed', position.coords.speed);  
+};
+
+function error(err) {
+  console.warn('ERROR(' + err.code + '): ' + err.message);
+};
+
+
+Meteor.setInterval(function() {
+  navigator.geolocation.getCurrentPosition(success, error, options);
+}, 5000);
+
+// Geolocation ends
+
 Template.loadPage.rendered = function() {
     // This is for the refuelbutton to be correct on page first load
     var refuelbutton = document.getElementById('reFuel-' + this.data._id);
@@ -205,5 +237,7 @@ Template.loadPage.rendered = function() {
     // This is for the statusbutton to be correct on page first load
     var activeCallButton = document.getElementById(this.data.status + '-' + this.data._id);
     $(activeCallButton).addClass("btn-success").siblings().removeClass('btn-success');
+
+
 
 }
