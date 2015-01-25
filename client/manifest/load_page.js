@@ -91,7 +91,7 @@ Template.loadPage.helpers({
     if(loadstatus=='jumpRunDrop') { statustext='Dropped'};
     if(loadstatus=='descend') { statustext='Descending'};
     if(loadstatus=='landed') { statustext='Landed, taxiing'};
-    if(loadstatus=='onBlocks') { statustext='Landed'};
+    if(loadstatus=='onBlock') { statustext='Landed'};
     return statustext;
   },
   total_weight: function(){

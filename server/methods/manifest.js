@@ -44,7 +44,7 @@ Meteor.methods({
   // Load statuses
   loadStatus: function (load,status) {
     console.log('Change in status for load ' + load + '. New status: ' + status);
-    if (status=='call5min' || status=='callGo' || status=='offBlock' || status=='takeOff' || status=='landed'|| status=='descend' || status=='onBlocks') {
+    if (status=='call5min' || status=='callGo' || status=='offBlock' || status=='takeOff' || status=='landed'|| status=='descend' || status=='onBlock') {
       closedstate = true;
     } else {
       closedstate = false;
