@@ -8,7 +8,7 @@ Template.pilotPanel.helpers({
 
 
 Template.pilotPanel.events({
-    'click .statuschange': function(event) {
+    'click .pilotstatuschange': function(event) {
         event.stopPropagation();
         loadid = this._id; //load id
         load = this; // load object for subfunctions

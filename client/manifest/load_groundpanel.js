@@ -1,5 +1,5 @@
 Template.groundPanel.events({
-    'click .statuschange': function(event) {
+    'click .groundstatuschange': function(event) {
         event.stopPropagation();
         loadid = this._id; //load id
         load = this; // load object for subfunctions
