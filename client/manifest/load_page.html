@@ -1,6 +1,6 @@
 <template name="loadPage">
 		    	<div class="panel panel-default">{{callbuttonstate}}
-				    <div class="panel-heading">
+				    <div class="panel-heading clearfix">
 					    <span class="pull-right">
 							{{#if useronload}}
 								{{#if closed}}
@@ -23,13 +23,21 @@
 							      {{/if}}
 							    {{/if}}
 						    {{/if}}
+						    <!-- load status labels -->
+						    <br><br>
+						    {{#if refuel}}
+						    	<span class="pull-right label label-warning">Refuel after landing</span>
+						    {{/if}}
+						    <br>
+	 						<span class="pull-right label label-primary">{{loadstatus}}</span>
 						</span>
-				        <h3 class="panel-title"><a href="{{pathFor 'loadPage'}}">     
+				        <h3 class="panel-title pull-left"><a href="{{pathFor 'loadPage'}}">
 					    Load {{loadnumber}} ({{aircraft.registration}} / {{aircraft.make}} {{aircraft.model}})</a></h3>
+					    <br>
 				    	Still can carry {{kilosleft}} kg more.<br>Created {{createtime}}.
 				    </div>
 
-				  <!-- jump details section -->
+				  	<!-- jump details section -->
 				    <div class="panel-heading" id="jumpdetails-{{_id}}" style="display: none;">
 				  		<form>
 								New jump: <select id="type-{{_id}}">
@@ -52,43 +60,36 @@
 				  <!-- jump details section ends -->
 
 				    <div class="panel-body">
- 						<img src="/img/pinnikey_onlypin.png?n" alt="{{registration}} {{make}} {{model}} image" align=right width=50 class="aircraftlist-img">
- 						{{#if refuel}}<span class="pull-right label label-warning">Refuel after landing</span>{{/if}}
- 						<span class="pull-right label label-primary">{{loadstatus}}</span>
-					    {{#if jumpers.length}} 
-					    	{{jumpers.length}} skydivers on board:
-					    {{else}}
-					    	Empty load 
- 					   	{{/if}}<br>
-					    {{#each jumpers}}
-					     {{jumper.profile.firstName}} {{jumper.profile.lastName}}: {{type}} @ {{altitude}} <br>
-					    {{/each}}
-					</div>
-					<br>
-					<div class="panel-body">
-						<div class="col-md-6 col-xs-6"><h4>Ground</h4>
+					    <div class="col-md-9">
+						    {{#if jumpers.length}} 
+						    	{{jumpers.length}} skydivers on board:
+						    {{else}}
+						    	Empty load 
+	 					   	{{/if}}<br>
+						    {{#each jumpers}}
+						     {{jumper.profile.firstName}} {{jumper.profile.lastName}}: {{type}} @ {{altitude}} <br>
+						    {{/each}}
+						</div>
+						<div class="col-md-3">
 					      <div class="btn-group-vertical col-md-12 col-xs-12">{{callbuttonstate}}
+							<button type="button" class="btn btn-default" disabled="disabled">Ground</button>
 							<button type="button" class="statuschange btn btn-default" status="callNoCall" id="callNoCall-{{_id}}">No call</button>
 							<button type="button" class="statuschange btn btn-default" status="call20min" id="call20min-{{_id}}">20 min</button>
 							<button type="button" class="statuschange btn btn-default" status="call10min" id="call10min-{{_id}}">10 min</button>
 							<button type="button" class="statuschange btn btn-default" status="call5min" id="call5min-{{_id}}">5 min</button>
 							<button type="button" class="statuschange btn btn-default" status="callGo" id="callGo-{{_id}}">Go</button>
-
-						  </div>
-					    </div>
-					    <div class="col-md-6 col-xs-6"><h4>Air (pilot controls)</h4>
-					      <div class="btn-group-vertical col-md-12 col-xs-12">
+							<button type="button" class="btn btn-default" disabled="disabled">Air</button>
 							<button type="button" class="statuschange btn btn-default" status="offBlock" id="offBlock-{{_id}}">Off block</button>
 							<button type="button" class="statuschange btn btn-default" status="takeOff" id="takeOff-{{_id}}">Takeoff</button>
 							<!-- <button type="button" class="statuschange btn btn-default" status="jumpRunDrop" id="jumpRunDrop-{{_id}}">Drop</button> -->
-							<button type="button" class="statuschange btn btn-default" status="descend" id="descend-{{_id}}">Descending [ground]</button>
+							<button type="button" class="statuschange btn btn-default" status="descend" id="descend-{{_id}}">Descending</button>
 							<button type="button" class="statuschange btn btn-default" status="landed" id="landed-{{_id}}">Landed</button>
 							<button type="button" class="statuschange btn btn-default" status="onBlock" id="onBlock-{{_id}}">On block</button>
 						  </div>
-						</div>
 						  <div class="btn-group-vertical col-md-12 col-xs-12">
 						    <button type="button" class="refuel btn btn-default" id="reFuel-{{_id}}">Refuel needed{{refuelstate}}</button>
 						  </div>
-					    </div>
-				    </div>
+						</div>
+					</div>
+				</div>
 </template>
