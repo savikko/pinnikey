@@ -1,9 +1,9 @@
-Template.brandEdit.events({
+Template.mfrEdit.events({
 	'submit form': function(e) {
 		
 		e.preventDefault();
 
-      	Router.go('brandsList');
+      	Router.go('mfrsList');
 
 	}
 

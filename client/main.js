@@ -6,7 +6,9 @@ Meteor.subscribe('logbook');
 
 Meteor.subscribe('rigs');
 
-Meteor.subscribe('brands');
+Meteor.subscribe('mfrs');
+
+Meteor.subscribe('makes');
 
 Meteor.subscribe('geartypes');
 

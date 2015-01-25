@@ -7,8 +7,11 @@
           </div>
           <div class="panel-body">
             <img src="/img/pinnikey_onlypin.png?n" align=right width=50 class="airplanelist-img">
-              Manufaturers include:<br>
-              (List of manufacturers...)
+              Makes include:<br>
+              
+              {{#each mfrs}}
+                  {{name}}<br>
+              {{/each}}
 
             <br>
               <i class="fa fa-edit"></i> <a id="edit" href="{{pathFor 'gearTypeEdit'}}">Edit</a>
