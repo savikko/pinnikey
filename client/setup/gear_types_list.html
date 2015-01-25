@@ -1,0 +1,18 @@
+
+<template name="gearTypesList">
+	<div class="page-header">
+	  <h1>Types of Gear</h1>
+	</div>
+	
+	<div class="row-fluid">
+		    {{#each gearTypes}}
+		    	{{> gearTypeItem}}
+		    {{/each}}
+		    <a href="{{pathFor 'gearTypeNew'}}" type="button" id="new" class="btn btn-default btn-lg" aria-label="Left Align">
+				<span class="fa fa-plus fa-lg" aria-hidden="true"></span>
+			</a>
+    </div>
+</template>
+
+
+

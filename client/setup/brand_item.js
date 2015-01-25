@@ -9,13 +9,9 @@ Template.brandItem.helpers({
 
 	brandInfo: function(){
 
-		//return this.established.getFullYear();
-
-		var brand = this; console.log(brand);
-		var terminated = "";
+		var brand = this;
 
 		if ( !!brand.established && !!brand.terminated){
-
 			return brand.established + " - " + brand.terminated;
 		} else if (!!brand.established) {
 			return "Founded in " 

@@ -8,6 +8,8 @@ Meteor.subscribe('rigs');
 
 Meteor.subscribe('brands');
 
+Meteor.subscribe('geartypes');
+
 //Meteor.subscribe('users');
 
 Accounts.ui.config({

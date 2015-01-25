@@ -11,3 +11,16 @@ if (Brands.find().count() === 0) {
   Brands.insert({ name : "Sunrise Manufacturing International Inc.", url : "http://www.skydivewings.com/"});
 
 }
+
+
+if (GearTypes.find().count() === 0) {
+
+  GearTypes.insert({ name : "Skydiving Rig" });
+  GearTypes.insert({ name : "Reserve Canopy" });
+  GearTypes.insert({ name : "Main Canopy" });
+  GearTypes.insert({ name : "AAD" });
+  GearTypes.insert({ name : "Audible Altimeter" });
+  GearTypes.insert({ name : "Visual Altimeter" });
+  GearTypes.insert({ name : "Custom made device" });
+
+}

@@ -10,6 +10,6 @@ Template.brandsList.events({
 Template.brandsList.helpers({ 
 
 	brands: function() {
-		return Brands.find()
+		return Brands.find();
 	}
 });

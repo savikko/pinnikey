@@ -27,3 +27,7 @@ Meteor.publish('loads', function(dz) {
 Meteor.publish('brands', function(){
 	return Brands.find();
 });
+
+Meteor.publish('geartypes', function(){
+	return GearTypes.find();
+});
