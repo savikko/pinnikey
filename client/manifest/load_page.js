@@ -1,8 +1,18 @@
 Template.loadPage.helpers({
   callbuttonstate: function() {
-    console.log(this.status + '-' + this._id);
     var activeCallButton = document.getElementById(this.status + '-' + this._id);
     $(activeCallButton).addClass("btn-success").siblings().removeClass('btn-success');
+    return;
+  },
+  refuelstate: function() {
+    var refuelbutton = document.getElementById('reFuel-' + this._id);
+    if (this.refuel) {
+      $(refuelbutton).removeClass("btn-default");      
+      $(refuelbutton).addClass("btn-warning");
+    } else {
+      $(refuelbutton).removeClass("btn-warning");      
+      $(refuelbutton).addClass("btn-default");
+    }
     return;
   },
   aircraftbuttonstate: function() {
@@ -45,7 +55,7 @@ Template.loadPage.helpers({
   		return false;
   	}
     },
-  loadstatus: function(id) {
+  manifeststatus: function(id) {
   	slotsavailable = Aircrafts.findOne({_id: this.aircraft}).maxjumpers;
   	if (Loads.findOne(this._id).jumpers.length) {
   		slotsused = Loads.findOne(this._id).jumpers.length;
@@ -56,17 +66,33 @@ Template.loadPage.helpers({
 
   	slotsfree = slotsavailable-slotsused;
   	if (slotsfree===0) {
-  		loadstatus = "FULL";
+  		manifeststatus = "FULL";
   	}
   	else if (slotsfree==1)
   	{
-  		loadstatus = slotsavailable-slotsused+" slot available";
+  		manifeststatus = slotsavailable-slotsused+" slot available";
   	}
   	else
   	{
-  		loadstatus = slotsavailable-slotsused+" slots available";  		
+  		manifeststatus = slotsavailable-slotsused+" slots available";  		
   	}
-  	return loadstatus;
+  	return manifeststatus;
+  },
+  loadstatus: function(){
+    loadstatus=Loads.findOne(this._id).status;
+    console.log(loadstatus);
+    if(loadstatus=='callNoCall' || typeof loadstatus == 'undefined') { statustext='No call'};
+    if(loadstatus=='call20min') { statustext='20 minutes call'};
+    if(loadstatus=='call10min') { statustext='10 minutes call'};
+    if(loadstatus=='call5min') { statustext='5 minutes call - Gear up!'};  
+    if(loadstatus=='callGo') { statustext='Boarding - Go!'};
+    if(loadstatus=='offBlock') { statustext='Taxiing'};
+    if(loadstatus=='takeOff') { statustext='Take off'};
+    if(loadstatus=='jumpRunDrop') { statustext='Dropped'};
+    if(loadstatus=='descend') { statustext='Descending'};
+    if(loadstatus=='landed') { statustext='Landed, taxiing'};
+    if(loadstatus=='onBlock') { statustext='Landed'};
+    return statustext;
   },
   total_weight: function(){
   	var weights = _.map(Loads.findOne(this._id).jumpers,function (value){ return value.weight; }); // get weights to array
@@ -138,25 +164,46 @@ Template.loadPage.events({
         return Meteor.call("addSkydiverToLoad", load, altitude, type);
         //Meteor.call
     },
-    'click .callchange': function(event) {
+    'click .statuschange': function(event) {
         event.stopPropagation();
         loadid = this._id; //load id
         load = this; // load object for subfunctions
-        call = $(event)[0].target.attributes.call.value; // is there some more sophisticated way to get call value from button?
+        status = $(event)[0].target.attributes.status.value; // is there some more sophisticated way to get status value from button?
         aircraftcall = Aircrafts.findOne(this.aircraft).registration.slice(-2).split('').join('');
-        Meteor.call("loadCall", loadid, call,function(error,result){
+        Meteor.call("loadStatus", loadid, status,function(error,result){
             if(error){
               console.log(error.reason);
             }
             else{
               calltext='';
               console.log(call);
-              if (call=="call20min") { calltext='20 minutes.'; }
-              if (call=="call10min") { calltext='10 minutes.'; }
-              if (call=="call5min") { calltext='5 minutes. Gear up.'; }
-              if (call=="callGo") { calltext=' go to the plane.'; }
-              tts.speak('Load ' + load.loadnumber + ', ' + aircraftcall + ', ' + calltext,'en');    // do something with result
+              if (status=="call20min") { calltext='20 minutes.'; }
+              if (status=="call10min") { calltext='10 minutes.'; }
+              if (status=="call5min") { calltext='5 minutes. Gear up.'; }
+              if (status=="callGo") { calltext=' go to the plane.'; }
+              if (calltext!="") { tts.speak('Load ' + load.loadnumber + ', ' + aircraftcall + ', ' + calltext,'en'); }   // do something with result
             }
         });
+    },
+    'click .refuel': function(event) {
+        event.stopPropagation();
+        loadid = this._id; //load id
+        Meteor.call("reFuel", loadid);
     }
 });
+
+Template.loadPage.rendered = function() {
+    // This is for the refuelbutton to be correct on page first load
+    var refuelbutton = document.getElementById('reFuel-' + this.data._id);
+    if (this.data.refuel) {
+      $(refuelbutton).removeClass("btn-default");      
+      $(refuelbutton).addClass("btn-warning");
+    } else {
+      $(refuelbutton).removeClass("btn-warning");      
+      $(refuelbutton).addClass("btn-default");
+    }
+    // This is for the statusbutton to be correct on page first load
+    var activeCallButton = document.getElementById(this.data.status + '-' + this.data._id);
+    $(activeCallButton).addClass("btn-success").siblings().removeClass('btn-success');
+
+}

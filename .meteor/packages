@@ -8,7 +8,6 @@ coffeescript
 less
 email
 iron:router
-meteorhacks:fast-render
 ian:accounts-ui-bootstrap-3
 accounts-password
 accounts-facebook
