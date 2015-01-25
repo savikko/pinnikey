@@ -86,11 +86,12 @@ Template.loadPage.helpers({
     if(loadstatus=='call10min') { statustext='10 minutes call'};
     if(loadstatus=='call5min') { statustext='5 minutes call - Gear up!'};  
     if(loadstatus=='callGo') { statustext='Boarding - Go!'};
-    if(loadstatus=='loaded') { statustext='Taxiing'};
+    if(loadstatus=='offBlock') { statustext='Taxiing'};
     if(loadstatus=='takeOff') { statustext='Take off'};
     if(loadstatus=='jumpRunDrop') { statustext='Dropped'};
     if(loadstatus=='descend') { statustext='Descending'};
-    if(loadstatus=='landed') { statustext='Landed'};
+    if(loadstatus=='landed') { statustext='Landed, taxiing'};
+    if(loadstatus=='onBlocks') { statustext='Landed'};
     return statustext;
   },
   total_weight: function(){
