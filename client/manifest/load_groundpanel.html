@@ -1,0 +1,16 @@
+<template name="groundPanel">
+	<div class="panel panel-default">
+	    <div class="panel-heading clearfix">
+	    	Ground panel
+	    </div>
+	    <div class="panel-body">
+			<div class="btn-group-vertical col-md-12 col-xs-12">{{callbuttonstate}}
+				<button type="button" class="groundstatuschange btn btn-default" status="callNoCall" id="callNoCall-{{_id}}">No call</button>
+				<button type="button" class="groundstatuschange btn btn-default" status="call20min" id="call20min-{{_id}}">20 min</button>
+				<button type="button" class="groundstatuschange btn btn-default" status="call10min" id="call10min-{{_id}}">10 min</button>
+				<button type="button" class="groundstatuschange btn btn-default" status="call5min" id="call5min-{{_id}}">5 min</button>
+				<button type="button" class="groundstatuschange btn btn-default" status="callGo" id="callGo-{{_id}}">Go</button>
+			</div>
+		</div>
+	</div>
+</template>

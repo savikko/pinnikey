@@ -44,7 +44,7 @@ Template.loadItem.helpers({
   		return false;
   	}
     },
-  loadstatus: function(id) {
+  manifeststatus: function(id) {
   	slotsavailable = Aircrafts.findOne({_id: this.aircraft}).maxjumpers;
   	if (Loads.findOne(this._id).jumpers.length) {
   		slotsused = Loads.findOne(this._id).jumpers.length;
@@ -55,17 +55,33 @@ Template.loadItem.helpers({
 
   	slotsfree = slotsavailable-slotsused;
   	if (slotsfree===0) {
-  		loadstatus = "FULL";
+  		manifeststatus = "FULL";
   	}
   	else if (slotsfree==1)
   	{
-  		loadstatus = slotsavailable-slotsused+" slot available";
+  		manifeststatus = slotsavailable-slotsused+" slot available";
   	}
   	else
   	{
-  		loadstatus = slotsavailable-slotsused+" slots available";  		
+  		manifeststatus = slotsavailable-slotsused+" slots available";  		
   	}
-  	return loadstatus;
+  	return manifeststatus;
+  },
+  loadstatus: function(){
+    loadstatus=Loads.findOne(this._id).status;
+    console.log(loadstatus);
+    if(loadstatus=='callNoCall' || typeof loadstatus == 'undefined') { statustext='No call'};
+    if(loadstatus=='call20min') { statustext='20 minutes call'};
+    if(loadstatus=='call10min') { statustext='10 minutes call'};
+    if(loadstatus=='call5min') { statustext='5 minutes call - Gear up!'};  
+    if(loadstatus=='callGo') { statustext='Boarding - Go!'};
+    if(loadstatus=='offBlock') { statustext='Taxiing'};
+    if(loadstatus=='takeOff') { statustext='Take off'};
+    if(loadstatus=='jumpRunDrop') { statustext='Dropped'};
+    if(loadstatus=='descend') { statustext='Descending'};
+    if(loadstatus=='landed') { statustext='Landed, taxiing'};
+    if(loadstatus=='onBlock') { statustext='Landed'};
+    return statustext;
   },
   total_weight: function(){
   	var weights = _.map(Loads.findOne(this._id).jumpers,function (value){ return value.weight; }); // get weights to array
@@ -136,38 +152,5 @@ Template.loadItem.events({
               e.style.display = 'block';
         return Meteor.call("addSkydiverToLoad", load, altitude, type);
         //Meteor.call
-    },
-    'click .callchange': function(event) {
-        event.stopPropagation();
-        loadid = this._id; //load id
-        load = this; // load object for subfunctions
-        call = $(event)[0].target.attributes.call.value; // is there some more sophisticated way to get call value from button?
-        aircraftcall = Aircrafts.findOne(this.aircraft).registration.slice(-2).split('').join('');
-        Meteor.call("loadCall", loadid, call,function(error,result){
-            if(error){
-              console.log(error.reason);
-              return false;
-            }
-            else{
-              calltext='';
-              console.log(call);
-              if (call=="call20min") { calltext='20 minutes.'; }
-              if (call=="call10min") { calltext='10 minutes.'; }
-              if (call=="call5min") { calltext='5 minutes. Gear up.'; }
-              if (call=="callGo") { calltext=' go to the plane.'; }
-              if (call!="callNoCall") { tts.speak('Load ' + load.loadnumber + ', ' + aircraftcall + ', ' + calltext,'en'); } 
-              return true;
-            }
-        });
     }
 });
-
-Template.loadItem.rendered = function(){
-  $("#type-" + this._id).select2({
-      placeholder: "Select type of jump"
-  });
-  $("#altitude-" + this._id).select2({
-      placeholder: "Select an altitude"
-  });
-  
-};
