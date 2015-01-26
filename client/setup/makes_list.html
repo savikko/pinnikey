@@ -1,0 +1,18 @@
+
+<template name="makesList">
+	<div class="page-header">
+	  <h1>Manufacturers</h1>
+	</div>
+	
+	<div class="row-fluid">
+		    {{#each makes}}
+		    	{{> makeItem}}
+		    {{/each}}
+		    <a href="{{pathFor 'makeNew'}}" type="button" id="new" class="btn btn-default btn-lg" aria-label="Left Align">
+				<span class="fa fa-plus fa-lg" aria-hidden="true"></span>
+			</a>
+    </div>
+</template>
+
+
+

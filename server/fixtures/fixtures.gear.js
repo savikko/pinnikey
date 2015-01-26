@@ -31,7 +31,7 @@ if (Makes.find().count() === 0) {
   Makes.insert({ name : "PD" });
   Makes.insert({ name : "MIRAGE" });
   Makes.insert({ name : "WINGS" });
-  Makes.insert({ name : "SYPRES" });
+  Makes.insert({ name : "CYPRES" });
   Makes.insert({ name : "L&B" });
   Makes.insert({ name : "SWS" });
   Makes.insert({ name : "ICARUS" });

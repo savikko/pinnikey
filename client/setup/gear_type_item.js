@@ -1,6 +1,6 @@
 Template.gearTypeItem.helpers({
 	
-	mfrs: function() {
+	makes: function() {
 		
 
 		return _.map(this.makes, function(value){
