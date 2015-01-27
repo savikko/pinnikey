@@ -15,12 +15,12 @@
 				</div>
 				<br>
 						
-				<button type="button" class="pilotstatuschange btn btn-default {{#if loadstatus "offBlock"}}btn-success{{/if}}" status="offBlock" id="offBlock-{{_id}}">Off block</button>
-				<button type="button" class="pilotstatuschange btn btn-default {{#if loadstatus "takeOff"}}btn-success{{/if}}" status="takeOff" id="takeOff-{{_id}}">Takeoff</button>
-				<!-- <button type="button" class="statuschange btn btn-default" status="jumpRunDrop" id="jumpRunDrop-{{_id}}">Drop</button> -->
-				<button type="button" class="pilotstatuschange btn btn-default {{#if loadstatus "descend"}}btn-success{{/if}}" status="descend" id="descend-{{_id}}">Descending</button>
-				<button type="button" class="pilotstatuschange btn btn-default {{#if loadstatus "landed"}}btn-success{{/if}}" status="landed" id="landed-{{_id}}">Landed</button>
-				<button type="button" class="pilotstatuschange btn btn-default {{#if loadstatus "onBlock"}}btn-success{{/if}}" status="onBlock" id="onBlock-{{_id}}">On block</button>
+				<button type="button" class="pilotstatuschange btn btn-default {{#if loadstatus "offBlock"}}btn-success{{/if}}" data-status="offBlock" id="offBlock-{{_id}}">Off block</button>
+				<button type="button" class="pilotstatuschange btn btn-default {{#if loadstatus "takeOff"}}btn-success{{/if}}" data-status="takeOff" id="takeOff-{{_id}}">Takeoff</button>
+				<!-- <button type="button" class="statuschange btn btn-default" data-status="jumpRunDrop" id="jumpRunDrop-{{_id}}">Drop</button> -->
+				<button type="button" class="pilotstatuschange btn btn-default {{#if loadstatus "descend"}}btn-success{{/if}}" data-status="descend" id="descend-{{_id}}">Descending</button>
+				<button type="button" class="pilotstatuschange btn btn-default {{#if loadstatus "landed"}}btn-success{{/if}}" data-status="landed" id="landed-{{_id}}">Landed</button>
+				<button type="button" class="pilotstatuschange btn btn-default {{#if loadstatus "onBlock"}}btn-success{{/if}}" data-status="onBlock" id="onBlock-{{_id}}">On block</button>
 			</div>
 		</div>
 	</div>

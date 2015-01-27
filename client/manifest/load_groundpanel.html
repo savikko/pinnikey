@@ -5,11 +5,11 @@
 	    </div>
 	    <div class="panel-body">
 			<div class="btn-group-vertical col-md-12 col-xs-12">{{callbuttonstate}}
-				<button type="button" class="groundstatuschange btn btn-default {{#unless status}}btn-success{{/unless}}" status="" id="callNoCall-{{_id}}">No call</button>
-				<button type="button" class="groundstatuschange btn btn-default {{#if loadstatus "call20min"}}btn-success{{/if}}" status="call20min" id="call20min-{{_id}}">20 min</button>
-				<button type="button" class="groundstatuschange btn btn-default {{#if loadstatus "call10min"}}btn-success{{/if}}" status="call10min" id="call10min-{{_id}}">10 min</button>
-				<button type="button" class="groundstatuschange btn btn-default {{#if loadstatus "call5min"}}btn-success{{/if}}" status="call5min" id="call5min-{{_id}}">5 min</button>
-				<button type="button" class="groundstatuschange btn btn-default {{#if loadstatus "callGo"}}btn-success{{/if}}" status="callGo" id="callGo-{{_id}}">Go</button>
+				<button type="button" class="groundstatuschange btn btn-default {{#unless status}}btn-success{{/unless}}" data-status="" id="callNoCall-{{_id}}">No call</button>
+				<button type="button" class="groundstatuschange btn btn-default {{#if loadstatus "call20min"}}btn-success{{/if}}" data-status="call20min" id="call20min-{{_id}}">20 min</button>
+				<button type="button" class="groundstatuschange btn btn-default {{#if loadstatus "call10min"}}btn-success{{/if}}" data-status="call10min" id="call10min-{{_id}}">10 min</button>
+				<button type="button" class="groundstatuschange btn btn-default {{#if loadstatus "call5min"}}btn-success{{/if}}" data-status="call5min" id="call5min-{{_id}}">5 min</button>
+				<button type="button" class="groundstatuschange btn btn-default {{#if loadstatus "callGo"}}btn-success{{/if}}" data-status="callGo" id="callGo-{{_id}}">Go</button>
 			</div>
 		</div>
 	</div>

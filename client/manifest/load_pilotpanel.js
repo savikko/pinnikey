@@ -19,7 +19,7 @@ Template.pilotPanel.events({
         event.stopPropagation();
         loadid = this._id; //load id
         load = this; // load object for subfunctions
-        status = $(event)[0].target.attributes.status.value; // is there some more sophisticated way to get status value from button?
+        status = $(event.target).data("status"); // is there some more sophisticated way to get status value from button?
         Meteor.call("loadStatus", loadid, status,function(error,result){
             if(error){
               console.log(error.reason);
