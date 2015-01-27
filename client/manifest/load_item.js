@@ -67,21 +67,12 @@ Template.loadItem.helpers({
   	}
   	return manifeststatus;
   },
-  loadstatus: function(){
-    loadstatus=Loads.findOne(this._id).status;
-    console.log(loadstatus);
-    if(loadstatus=='callNoCall' || typeof loadstatus == 'undefined') { statustext='No call'};
-    if(loadstatus=='call20min') { statustext='20 minutes call'};
-    if(loadstatus=='call10min') { statustext='10 minutes call'};
-    if(loadstatus=='call5min') { statustext='5 minutes call - Gear up!'};  
-    if(loadstatus=='callGo') { statustext='Boarding - Go!'};
-    if(loadstatus=='offBlock') { statustext='Taxiing'};
-    if(loadstatus=='takeOff') { statustext='Take off'};
-    if(loadstatus=='jumpRunDrop') { statustext='Dropped'};
-    if(loadstatus=='descend') { statustext='Descending'};
-    if(loadstatus=='landed') { statustext='Landed, taxiing'};
-    if(loadstatus=='onBlock') { statustext='Landed'};
-    return statustext;
+  loadstatus: function(status) {
+    if (this.status==status) {
+      return true;
+    } else {
+      return false;
+    }
   },
   total_weight: function(){
   	var weights = _.map(Loads.findOne(this._id).jumpers,function (value){ return value.weight; }); // get weights to array
