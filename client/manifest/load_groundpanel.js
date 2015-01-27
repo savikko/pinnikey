@@ -1,6 +1,6 @@
 Template.groundPanel.helpers({
     loadstatus: function(status) {
-      return this.status==status;
+      return this.status===status;
     }
 });
 
