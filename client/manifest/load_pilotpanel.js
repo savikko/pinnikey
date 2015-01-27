@@ -3,7 +3,14 @@ Template.pilotPanel.helpers({
 	  lat: function() { return Session.get('lat'); },
 	  lon: function() { return Session.get('lon'); },
 	  alt: function() { return Math.round(Session.get('alt')) + ' m'; },
-	  speed: function() { return Math.round(Session.get('speed')) + ' m/s'; }
+	  speed: function() { return Math.round(Session.get('speed')) + ' m/s'; },
+    loadstatus: function(status) {
+    if (this.status==status) {
+      return true;
+    } else {
+      return false;
+    }
+    }
 });
 
 

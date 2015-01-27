@@ -1,3 +1,14 @@
+Template.groundPanel.helpers({
+    loadstatus: function(status) {
+    if (this.status==status) {
+      return true;
+    } else {
+      return false;
+    }
+    }
+});
+
+
 Template.groundPanel.events({
     'click .groundstatuschange': function(event) {
         event.stopPropagation();

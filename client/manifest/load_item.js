@@ -1,14 +1,4 @@
 Template.loadItem.helpers({
-  callbuttonstate: function() {
-    var activeCallButton = document.getElementById(this.status + '-' + this._id);
-    $(activeCallButton).addClass("btn-success").siblings().removeClass('btn-success');
-    return;
-  },
-  aircraftbuttonstate: function() {
-    var activeAircraftButton = document.getElementById(this.aircraftstatus);
-    $(activeAirlaneButton).addClass("btn-success").siblings().removeClass('btn-success');
-    return;
-  },
   aircraft: function() {
   	aircraft = Aircrafts.findOne({_id: this.aircraft});
 	return aircraft;
