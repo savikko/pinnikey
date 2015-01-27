@@ -58,11 +58,7 @@ Template.loadItem.helpers({
   	return manifeststatus;
   },
   loadstatus: function(status) {
-    if (this.status==status) {
-      return true;
-    } else {
-      return false;
-    }
+    return this.status==status;
   },
   total_weight: function(){
   	var weights = _.map(Loads.findOne(this._id).jumpers,function (value){ return value.weight; }); // get weights to array

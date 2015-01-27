@@ -5,11 +5,7 @@ Template.pilotPanel.helpers({
 	  alt: function() { return Math.round(Session.get('alt')) + ' m'; },
 	  speed: function() { return Math.round(Session.get('speed')) + ' m/s'; },
     loadstatus: function(status) {
-    if (this.status==status) {
-      return true;
-    } else {
-      return false;
-    }
+      return this.status==status;
     }
 });
 
