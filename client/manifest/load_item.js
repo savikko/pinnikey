@@ -9,13 +9,15 @@ Template.loadItem.helpers({
   jumper: function(id) {
 	 return Meteor.users.findOne(this.id);
 	},
-  useronload: function(id) {
-    if (_.find(Loads.findOne(this._id).jumpers, function(obj) { return obj.id == Meteor.userId(); }).id==Meteor.userId()) {
-      return true;
+  useronload: function() {
+    if (Loads.findOne(this._id).jumpers!=0) {
+      if (_.find(Loads.findOne(this._id).jumpers, function(obj) { return obj.id == Meteor.userId(); }).id==Meteor.userId()) {
+        return true;
+      }
+      else {
+        return false;
+      } 
     }
-    else {
-      return false;
-    } 
   },
   freeslots: function() {
   	slotsavailable = Aircrafts.findOne({_id: this.aircraft}).maxjumpers;
