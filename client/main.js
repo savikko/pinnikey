@@ -12,6 +12,8 @@ Meteor.subscribe('makes');
 
 Meteor.subscribe('geartypes');
 
+Meteor.subscribe('models');
+
 //Meteor.subscribe('users');
 
 Accounts.ui.config({

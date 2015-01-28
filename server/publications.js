@@ -35,3 +35,7 @@ Meteor.publish('geartypes', function(){
 Meteor.publish('makes', function(){
 	return Makes.find();
 });
+
+Meteor.publish('models', function(){
+	return Models.find();
+});

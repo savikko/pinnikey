@@ -39,3 +39,18 @@ if (Makes.find().count() === 0) {
 
 
 }
+
+if (Models.find().count() === 0) {
+
+  Models.insert({ name : "Sabre 1" });
+  Models.insert({ name : "Sabre 2" });
+  Models.insert({ name : "MIRAGE 3G" });
+  Models.insert({ name : "WINGS Student" });
+  Models.insert({ name : "CYPRES 2" });
+  Models.insert({ name : "Optima II" });
+  Models.insert({ name : "FIRE" });
+  Models.insert({ name : "Petra" });
+  Models.insert({ name : "Scirocco" });
+
+
+}

@@ -1,0 +1,37 @@
+<template name="modelEdit">
+	{{#autoForm collection="Models" doc=this id="modelEdit" type="update"}}
+	<fieldset>
+		<legend>Edit Model</legend>
+		{{> afFieldInput type="text" id="name" name='name' options=options}}
+		<br>
+		{{> afFieldInput type="select" id="gtype" name='gtype' options=optionsGType firstOption="(Select Type)"}}
+		<br>
+		{{> afFieldInput type="select" id="make" name='make' options=optionsMakes firstOption="(Select Make)"}}
+		<br>
+	</fieldset>
+	<button type="submit" class="btn btn-primary">Submit</button>
+  {{/autoForm}}
+	<!-- {{#autoForm collection="Books" id="insertBookForm" type="insert"}}
+		<fieldset>
+		<legend>Add a Book</legend>
+		{{> afQuickField name='title'}}
+		{{> afQuickField name='author'}}
+		{{> afQuickField name='summary' rows=6}}
+		{{> afQuickField name='copies'}}
+		{{> afQuickField name='lastCheckedOut'}}
+		<div class="form-group{{#if afFieldIsInvalid name='cost'}} has-error{{/if}}">
+			<div class="input-group">
+				<span class="input-group-addon">$</span>
+				{{> afFieldInput name='cost'}}
+				<span class="input-group-addon">/each</span>
+			</div>
+			{{#if afFieldIsInvalid name='cost'}}
+				<span class="help-block">{{afFieldMessage name='cost'}}</span>
+			{{/if}}
+		</div>
+		</fieldset>
+  		<button type="submit" class="btn btn-primary">Insert</button>
+  {{/autoForm}} -->
+	<!-- {{> afFieldInput name="year" options=yearOptions}}
+	{{> afFieldInput name="year" options=yearOptions}} -->
+</template>
