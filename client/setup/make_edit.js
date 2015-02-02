@@ -6,3 +6,4 @@ Template.makeEdit.events({
 
 	}
 });
+

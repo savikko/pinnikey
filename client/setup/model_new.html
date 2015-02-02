@@ -1,8 +1,8 @@
-<template name="modelEdit">
-	{{#autoForm collection="Models" doc=this id="modelEdit" type="update"}}
+<template name="modelNew">
+	{{#autoForm collection="Models" doc=this id="modelEdit" type="insert"}}
 	<fieldset>
-		<legend>Edit Model</legend>
-		{{> afFieldInput type="text" id="name" name='name'}}
+		<legend>New Model</legend>
+		{{> afFieldInput type="text" id="name" name='name' label="Name"}}
 		<br>
 		{{> afFieldInput type="select" id="gtype" name='gtype' options=optionsGType firstOption="(Select Type)"}}
 		<br>

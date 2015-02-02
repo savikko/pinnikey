@@ -10,7 +10,6 @@ Template.modelsList.events({
 Template.modelsList.helpers({ 
 
 	models: function() {
-		console.log(Models.find().count());
 		return Models.find();
 	}
 });
