@@ -4,14 +4,16 @@ Template.makeItem.helpers({
 		
 		if(this.mfr){
 			
-			var mfrId = this.mfr[0].id;
-			
-			var mfrs = Mfrs.findOne(mfrId);
+			return Mfrs.findOne(this.mfr).name;
 
-			return mfrs.name;
 		}
 
 		return "None. Fix it!";
 
+	},
+
+	manufacturerId: function() {
+		return this.mfr;
 	}
+	
 });

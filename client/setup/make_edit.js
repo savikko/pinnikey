@@ -7,3 +7,16 @@ Template.makeEdit.events({
 	}
 });
 
+Template.makeEdit.helpers({
+
+	optionsMfr: function () {
+  		
+  		return Mfrs.find().fetch().map(function (value){
+                return {
+                    label: value.name, value: value._id};
+              });
+
+  	},
+
+});
+

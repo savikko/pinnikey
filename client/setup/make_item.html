@@ -7,7 +7,7 @@
           </div>
           <div class="panel-body">
             <img src="/img/pinnikey_onlypin.png?n" align=right width=50 class="airplanelist-img">
-              Manufacturer: {{manufacturerName}} <br>
+              Manufacturer: <a id="edit" href="{{pathFor 'mfrEdit' _id=manufacturerId}}">{{manufacturerName}}</a><br>
               Models include:<br>
               
               <!-- {{#each model}}
