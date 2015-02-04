@@ -16,11 +16,32 @@ Template.mfrItem.helpers({
 		} else if (!!mfr.established) {
 			return "Founded in " 
 					+ mfr.established.getFullYear()
-					+ ". Heading for the ultimate awesomness!";
+					+ ".";
 		}
 
-		return "Working on a business plan";
+		return "";
 
+	},
+
+	makes: function() {
+
+		var makes = Makes.find({mfr: this._id}).fetch();
+
+		if(!!!makes.length) return undefined;
+
+		return makes;
+	},
+
+	models: function() {
+
+		var makes = Makes.find({mfr: this._id}).fetch();
+
+		var models = makes.map(function(value){
+			var models = Models.find({make: value._id}).fetch();
+			return models;
+		});
+		
+		return models; // 2D array
 	}
 
 
