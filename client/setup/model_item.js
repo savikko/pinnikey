@@ -1,9 +1,9 @@
+
+
 Template.modelItem.helpers({
 	
 	makeName: function() {
 
-		
-		
 		if(this.make){
 			var makeId = this.make;
 			var make = Makes.findOne(this.make);
@@ -12,5 +12,12 @@ Template.modelItem.helpers({
 
 		return "";
 
+	},
+
+	makeId: function() {
+		
+		return this.make;
+
 	}
+
 });

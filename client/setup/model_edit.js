@@ -2,6 +2,7 @@ var gtypeId = undefined;
 var gtypeIdDep = new Deps.Dependency; // for optionMakes helper
 
 
+
 Template.modelEdit.events({
 	'submit form': function(e) {
 		
