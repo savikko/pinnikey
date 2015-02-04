@@ -3,7 +3,10 @@ Template.pilotPanel.helpers({
 	  lat: function() { return Session.get('lat'); },
 	  lon: function() { return Session.get('lon'); },
 	  alt: function() { return Math.round(Session.get('alt')) + ' m'; },
-	  speed: function() { return Math.round(Session.get('speed')) + ' m/s'; }
+	  speed: function() { return Math.round(Session.get('speed')) + ' m/s'; },
+    loadstatus: function(status) {
+      return this.status===status;
+    }
 });
 
 
@@ -12,8 +15,7 @@ Template.pilotPanel.events({
         event.stopPropagation();
         loadid = this._id; //load id
         load = this; // load object for subfunctions
-        status = $(event)[0].target.attributes.status.value; // is there some more sophisticated way to get status value from button?
-        aircraftcall = Aircrafts.findOne(this.aircraft).registration.slice(-2).split('').join('');
+        status = $(event.target).data("status"); // is there some more sophisticated way to get status value from button?
         Meteor.call("loadStatus", loadid, status,function(error,result){
             if(error){
               console.log(error.reason);

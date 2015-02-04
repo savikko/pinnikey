@@ -29,7 +29,42 @@
 		    	<span class="pull-right label label-warning">Refuel after landing</span>
 		    {{/if}}
 		    <br>
-				<span class="pull-right label label-primary">{{loadstatus}}</span>
+				<span class="pull-right label label-primary">
+				{{#unless status}}
+					No call
+				{{else}}
+				    {{#if loadstatus "call20min"}}
+				    	20 minutes call
+				    {{/if}}
+				    {{#if loadstatus "call10min"}}
+				    	10 minutes call
+				    {{/if}}
+				    {{#if loadstatus "call5min"}}
+				    	5 minutes call - Gear up!
+				    {{/if}}  
+				    {{#if loadstatus "callGo"}}
+				    	Boarding - Go!
+				    {{/if}}
+				    {{#if loadstatus "offBlock"}}
+				    	Taxiing
+				    {{/if}}
+				    {{#if loadstatus "takeOff"}}
+				    	Getting altitude
+				    {{/if}}
+				    {{#if loadstatus "jumpRunDrop"}}
+				    	Dropped
+				    {{/if}}
+				    {{#if loadstatus "descend"}}
+				    	Descending
+				    {{/if}}
+				    {{#if loadstatus "landed"}}
+				    	Landed, taxiing
+				    {{/if}}
+				    {{#if loadstatus "onBlock"}}
+				    	Landed
+				    {{/if}}
+				{{/unless}}
+				</span>
 		</span>
         <h3 class="panel-title pull-left"><a href="{{pathFor 'loadPage'}}">
 	    Load {{loadnumber}} ({{aircraft.registration}} / {{aircraft.make}} {{aircraft.model}})</a></h3>
