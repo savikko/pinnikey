@@ -1,3 +1,17 @@
 <template name="mfrEdit">
-	{{> quickForm collection="Mfrs" doc=this id="mfrEdit" type="update"}}
+	{{#autoForm collection="Mfrs" doc=this id="mfrEdit" type="update"}}
+	<fieldset>
+		<legend>Edit Manufacturer details</legend>
+		{{> afQuickField type="text" id="name" name='name'}}
+		{{> afQuickField type="text" id="url" name='url'}}
+		{{> afQuickField id="established" name="established"}}
+		{{#if established}}
+			{{> afQuickField id="terminated" name="terminated"}}
+		{{/if}}
+		{{#if terminated}}
+			{{> afQuickField id="successor" name="successor" options=successorOptions firstOption="(Select Successor)"}}
+		{{/if}}
+	</fieldset>
+	<button type="submit" class="btn btn-primary">Submit</button>
+  {{/autoForm}}
 </template>
