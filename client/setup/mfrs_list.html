@@ -14,7 +14,7 @@
 		    {{#each mfrs}}
 		    	{{> mfrItem}}
 		    {{/each}}
-		    <a href="{{pathFor 'mfrNew'}}" type="button" id="new" class="btn btn-default btn-lg" aria-label="Left Align">
+		    <a href="{{pathFor 'mfrEdit' dbAction='insert' _id='new'}}" type="button" id="new" class="btn btn-default btn-lg" aria-label="Left Align">
 				<span class="fa fa-plus fa-lg" aria-hidden="true"></span>
 			</a>
     </div>

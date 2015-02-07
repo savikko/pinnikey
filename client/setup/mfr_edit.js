@@ -37,10 +37,20 @@ Template.mfrEdit.events({
 
 Template.mfrEdit.helpers({
 
+	dbAction: function(){// "insert" if no _id, "update" if _id
+		
+		if(!this._id) return "insert";
+		return "update";
+	},
+
+	dbActInsert: function(){ //true if no _id, meaning insert
+		return !this._id;
+	},
+
 	established: function(){  // if true, the Terminated field is shown
 		establishedDep.depend();
 
-		if(!!!established) established = this.established;
+		if(!!!established) established = AutoForm.getFieldValue('mfrEdit', 'established');
 
 		return !!established;
 
@@ -55,8 +65,8 @@ Template.mfrEdit.helpers({
 
 	},
 
-	successorOptions: function(){
-		return Mfrs.find().fetch().map(function(value){
+	successorOptions: function(){ // all manufacturers eccept this
+		return Mfrs.find({_id:{$ne: this._id}}).fetch().map(function(value){
 			return {
                 label: value.name, 
                 value: value._id

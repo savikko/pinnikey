@@ -1,7 +1,13 @@
 <template name="mfrEdit">
-	{{#autoForm collection="Mfrs" doc=this id="mfrEdit" type="update"}}
+	{{#autoForm collection="Mfrs" doc=this id="mfrEdit" type=dbAction}}
 	<fieldset>
-		<legend>Edit Manufacturer details</legend>
+		<legend>
+			{{#if dbActInsert}}
+				New Manufacturer
+			{{else}}
+				Edit Manufacturer details
+			{{/if}}
+		</legend>
 		{{> afQuickField type="text" id="name" name='name'}}
 		{{> afQuickField type="text" id="url" name='url'}}
 		{{> afQuickField id="established" name="established"}}
