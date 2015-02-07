@@ -23,25 +23,33 @@ Template.mfrItem.helpers({
 
 	},
 
-	makes: function() {
+	makesNames: function() {	// returns indexed names of makes
 
-		var makes = Makes.find({mfr: this._id}).fetch();
+		var makes = Makes.find({mfr: this._id}, { fields: {name: 1} } ) //find and fetch makes projection
+						.map(function(value, index){	//map through 1d array
+							return {name: value.name, index: index};
+						});
 
-		if(!!!makes.length) return undefined;
-
-		return makes;
+		return makes; //[{_id: <_id>, name: <name>, index: <index>}]
 	},
 
-	models: function() {
+	modelsNames: function() { // returns indexed names of models of every make
 
-		var makes = Makes.find({mfr: this._id}).fetch();
-
-		var models = makes.map(function(value){
-			var models = Models.find({make: value._id}).fetch();
-			return models;
+		var makes = Makes.find({mfr: this._id}, {fields: {_id: 1} } );
+	
+		var models = [];
+		var i = 0;
+		makes.forEach(function(make){	// iterate through makes
+			Models.find({make: make._id}, {fields: {name:1}})	//find and fetch models projections
+				.forEach(function(model){	//iterate through models within each make
+					models.push({name: model.name, index: i}); // index each model and push to the models array
+				i++;
+			});
+			
 		});
 		
-		return models; // 2D array
+
+		return models; // 1D array [{_id: <_id>, name: <name>, index: <index>}]
 	}
 
 

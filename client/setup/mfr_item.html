@@ -7,7 +7,7 @@
               <i class="fa fa-building"></i>
               {{#if url}}
                 <a href="{{url}}" target="_blank">    
-                  {{name}} <i class="fa fa-external-link"></i>
+                  {{name}} <span>{{domain}}</span> <i class="fa fa-external-link"></i>
                 </a>
               {{else}}
                 {{name}}
@@ -22,21 +22,19 @@
               <i class="fa fa-info"></i> {{mfrInfo}}<br>
             {{/if}}
 
-            {{#if makes}}
+            {{#if makesNames}}
               <i class="fa fa-tag"></i> 
-              {{#each makes}}
+              {{#each makesNames}}
+                {{#if index}}, {{/if}}
                   {{name}}
               {{/each}}
               <br>
             {{/if}}
 
-            {{#if models}}
+            {{#if modelsNames}}
               <i class="fa fa-gear"></i> 
-              {{#each models}}
-                {{#each this}}
-                 {{name}}
-                {{/each}}
-              {{/each}}
+              {{#each modelsNames}}{{#if index}},{{/if}}
+                {{name}}{{/each}}
             {{/if}}
             
             <br>
