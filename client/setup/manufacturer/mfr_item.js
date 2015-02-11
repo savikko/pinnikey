@@ -12,7 +12,7 @@ Template.mfrItem.helpers({
 		var mfr = this;
 
 		if ( !!mfr.established && !!mfr.terminated){
-			return mfr.established + " - " + mfr.terminated;
+			return mfr.established.getFullYear() + " - " + mfr.terminated.getFullYear();
 		} else if (!!mfr.established) {
 			return "Founded in " 
 					+ mfr.established.getFullYear()

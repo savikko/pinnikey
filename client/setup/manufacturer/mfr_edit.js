@@ -1,34 +1,44 @@
 
-var established;
-var terminated;
 var establishedDep = new Deps.Dependency;
-var terminatedDep = establishedDep; //just out of curiosity using the same dependency for the terminated-helper
+var terminatedDep = establishedDep; 
 
-Template.mfrEdit.created = function() {
-	established = undefined;	//initialise whenever an instance is created
-	terminated = undefined;		//otherwise these locals retain values from previous instances
+
+Template.mfrEdit.rendered = function(){
+
+	// Workaround to reset previous validation errors
+	//If the form has errors and the user navigates away
+	//the validation errors are shown on the next load of the template.
+	//Bug? Ficha? Annoying anyway!
+	AutoForm.validateForm('mfrEdit'); 
 };
 
-Template.mfrEdit.events({
-	'submit form': function(e) {
-		
-		e.preventDefault();
-
-      	Router.go('mfrsList');
-
+AutoForm.addHooks(['mfrEdit'], {
+	onSuccess: function(doc){
+		Router.go('mfrsList');
 	},
 
-	'change #established': function(e) {
+	onError: function(){
+		console.log('error'); // this here should be handled somehow
+	}
 
-		established = AutoForm.getFieldValue('mfrEdit', 'established');
-		establishedDep.changed(); // generate change
+});
+
+
+
+Template.mfrEdit.events({
+
+
+	'change #established': function(e) {
+		
+		establishedDep.changed(); // trigger change
+		AutoForm.validateField('mfrEdit', 'terminated', true); // validate 
 
 	},
 
 	'change #terminated': function(e) {
 
-		terminated = AutoForm.getFieldValue('mfrEdit', 'terminated');
-		terminatedDep.changed(); // generate change
+		terminatedDep.changed(); // trigger change
+		 
 
 	}
 
@@ -38,40 +48,40 @@ Template.mfrEdit.events({
 Template.mfrEdit.helpers({
 
 	dbAction: function(){// "insert" if no _id, "update" if _id
-		
+
 		if(!this._id) return "insert";
 		return "update";
 	},
 
-	dbActInsert: function(){ //true if no _id, meaning insert
+	isInsert: function(){ //true if no _id, meaning: insert
+
 		return !this._id;
 	},
 
 	established: function(){  // if true, the Terminated field is shown
 		establishedDep.depend();
 
-		if(!!!established) established = AutoForm.getFieldValue('mfrEdit', 'established');
-
-		return !!established;
+		return !!AutoForm.getFieldValue('mfrEdit', 'established');
 
 	},
 
 	terminated: function(){  // if true, the Successor field is shown
-		establishedDep.depend();
+		terminatedDep.depend();
+		var established = AutoForm.getFieldValue('mfrEdit', 'established');
+		if(!established) return false;//if it's not established, it's not terminated either -> do not show the successor field
 
-		if(!!!terminated) terminated = this.terminated;
-
-		return !!terminated;
+		return !!AutoForm.getFieldValue('mfrEdit', 'terminated');
 
 	},
 
-	successorOptions: function(){ // all manufacturers eccept this
-		return Mfrs.find({_id:{$ne: this._id}}).fetch().map(function(value){
-			return {
-                label: value.name, 
-                value: value._id
-            };
-		})
-	}
+	// successorOptions: function(){ // all manufacturers eccept this
+
+	// 	return Mfrs.find({_id:{$ne: this._id}}).fetch().map(function(value){
+	// 		return {
+ //                label: value.name, 
+ //                value: value._id
+ //            };
+	// 	})
+	// },
 
 });
