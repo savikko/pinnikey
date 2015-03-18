@@ -1,0 +1,24 @@
+<template name="makeItem">
+
+    <div class="col-md-4 col-sm-6 col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">{{name}}</h3>
+          </div>
+          <div class="panel-body">
+            <img src="/img/pinnikey_onlypin.png?n" align=right width=50 class="airplanelist-img">
+              Manufacturer: <a id="edit" href="{{pathFor 'mfrEdit' _id=manufacturerId}}">{{manufacturerName}}</a><br>
+              Models include:<br>
+              
+              <!-- {{#each model}}
+                  {{name}}<br>
+              {{/each}} -->
+
+            <br>
+              <i class="fa fa-edit"></i> <a id="edit" href="{{pathFor 'makeEdit'}}">Edit</a>
+          </div>
+        </div>
+    </div>
+
+
+</template>

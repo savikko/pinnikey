@@ -1,0 +1,23 @@
+<template name="mfrEdit">
+	{{#autoForm collection="Mfrs" validation="keyup" doc=this id="mfrEdit" type=dbAction}}
+	<fieldset>
+		<legend>
+			{{#if isInsert}}
+				New Manufacturer
+			{{else}}
+				Edit Manufacturer details
+			{{/if}}
+		</legend>
+		{{> afQuickField type="text" id="name" name='name'}}
+		{{> afQuickField type="text" id="url" name='url'}}
+		{{> afQuickField id="established" name="established"}}
+		{{#if established}}
+			{{> afQuickField default="" id="terminated" name="terminated"}}
+		{{/if}}
+		{{#if terminated}}
+			{{> afQuickField id="successor" name="successor" firstOption="(Select Successor)"}}
+		{{/if}}
+	</fieldset>
+	<button type="submit" id="submitButton" class="btn btn-primary">Submit</button>
+  {{/autoForm}}
+</template>

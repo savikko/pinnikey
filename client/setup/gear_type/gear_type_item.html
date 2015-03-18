@@ -1,0 +1,23 @@
+<template name="gearTypeItem">
+
+    <div class="col-md-4 col-sm-6 col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">{{name}}</h3>
+          </div>
+          <div class="panel-body">
+            <img src="/img/pinnikey_onlypin.png?n" align=right width=50 class="airplanelist-img">
+              Makes include:<br>
+              
+              {{#each makes}}
+                  {{name}}<br>
+              {{/each}}
+
+            <br>
+              <i class="fa fa-edit"></i> <a id="edit" href="{{pathFor 'gearTypeEdit'}}">Edit</a>
+          </div>
+        </div>
+    </div>
+
+
+</template>
