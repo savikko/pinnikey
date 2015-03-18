@@ -23,3 +23,19 @@ Meteor.publish('users', function(userIds) {
 Meteor.publish('loads', function(dz) {
   return Loads.find({dropzone: dz});
 });
+
+Meteor.publish('mfrs', function(){
+	return Mfrs.find();
+});
+
+Meteor.publish('geartypes', function(){
+	return GearTypes.find();
+});
+
+Meteor.publish('makes', function(){
+	return Makes.find();
+});
+
+Meteor.publish('models', function(){
+	return Models.find();
+});

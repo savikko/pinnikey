@@ -1,0 +1,14 @@
+
+
+<template name="makeEdit">
+	{{#autoForm collection="Makes" doc=this id="makeEdit" type="update"}}
+	<fieldset>
+		<legend>Edit Make</legend>
+		{{> afFieldInput type="text" id="name" name='name'}}
+		<br>
+		{{> afFieldInput type="select" id="mfr" name='mfr' options=optionsMfr firstOption="(Select Type)"}}
+		<br>
+	</fieldset>
+	<button type="submit" class="btn btn-primary">Submit</button>
+  {{/autoForm}}
+</template>

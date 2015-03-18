@@ -6,6 +6,14 @@ Meteor.subscribe('logbook');
 
 Meteor.subscribe('rigs');
 
+Meteor.subscribe('mfrs');
+
+Meteor.subscribe('makes');
+
+Meteor.subscribe('geartypes');
+
+Meteor.subscribe('models');
+
 //Meteor.subscribe('users');
 
 Accounts.ui.config({

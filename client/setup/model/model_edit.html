@@ -1,0 +1,16 @@
+<template name="modelEdit">
+	{{#autoForm collection="Models" doc=this id="modelEdit" type="update"}}
+	<fieldset>
+		<legend>Edit Model</legend>
+		{{> afFieldInput type="text" id="name" name='name'}}
+		<br>
+		{{> afFieldInput type="select" id="gtype" name='gtype' options=optionsGType firstOption="(Select Type)"}}
+		<br>
+		{{#if showMakes}}
+			{{> afFieldInput type="select" id="make" name='make' options=optionsMakes firstOption="(Select Make)"}}
+			<br>
+		{{/if}}
+	</fieldset>
+	<button type="submit" class="btn btn-primary">Submit</button>
+  {{/autoForm}}
+</template>
