@@ -10,7 +10,7 @@ Template.loadItem.helpers({
 	 return Meteor.users.findOne(this.id);
 	},
   useronload: function() {
-    if (Loads.findOne(this._id).jumpers!=0) {
+    if (Loads.findOne(this._id).jumpers!==0) {
       if (_.find(Loads.findOne(this._id).jumpers, function(obj) { return obj.id == Meteor.userId(); }).id==Meteor.userId()) {
         return true;
       }
@@ -134,4 +134,4 @@ Template.loadItem.events({
     }
 });
 
-    Mousetrap.bind('4', function() { console.log('4'); });
+Mousetrap.bind('M', function() { console.log('4'); });

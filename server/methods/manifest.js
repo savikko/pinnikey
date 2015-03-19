@@ -21,24 +21,37 @@ Meteor.methods({
     startofday = new Date(moment().tz(dzobj.timezone).startOf('day').toISOString());
     lastLoad = Loads.findOne({dropzone: dz, "aircraft" : aircraft, date: {$gte: startofday}},{sort: {loadnumber: -1}});
     if (lastLoad) {
-      console.log('Found one load');
-      nextLoad = lastLoad.loadnumber+1;
+      console.log('Found last load with id: ' + lastLoad._id);
+      //  Loads.findOne(lastLoad).
+      if (Loads.findOne(lastLoad._id).jumpers.length==0) {
+        nextLoad = 0;
+      }
+      else {
+        nextLoad = lastLoad.loadnumber+1;
+      }
     }
     else { // we didn't find any loads for today
-      console.log('not found!');
+      console.log('No loads found for today, adding first one');
       nextLoad = 1;
     };
-
+    // If there is load with no jumpers, do not add new load
+    if (nextLoad==0) {
+      console.log('There is one load with no jumpers, not adding a new one');
+      return false;
+    }
+    else {
+      console.log('Adding new load with loadnumber:' + nextLoad);
     Loads.insert({
-    dropzone: dz,
-    aircraft: aircraft,
-    loadnumber: nextLoad,
-    createdBy: this.userId,
-    closed: false,
-    jumpers: [],
-    pilot: "mNQc66f42TYSboGLQ" // static for development purposes for now..
+      dropzone: dz,
+      aircraft: aircraft,
+      loadnumber: nextLoad,
+      createdBy: this.userId,
+      closed: false,
+      jumpers: [],
+      pilot: "mNQc66f42TYSboGLQ" // static for development purposes for now..
      });
     return true;
+    }
   },
 
   // Load statuses
