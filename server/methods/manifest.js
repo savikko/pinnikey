@@ -23,7 +23,7 @@ Meteor.methods({
     if (lastLoad) {
       console.log('Found last load with id: ' + lastLoad._id);
       //  Loads.findOne(lastLoad).
-      if (Loads.findOne(lastLoad._id).jumpers.length==0) {
+      if (Loads.findOne(lastLoad._id).jumpers.length===0) {
         nextLoad = 0;
       }
       else {
@@ -33,22 +33,22 @@ Meteor.methods({
     else { // we didn't find any loads for today
       console.log('No loads found for today, adding first one');
       nextLoad = 1;
-    };
+    }
     // If there is load with no jumpers, do not add new load
-    if (nextLoad==0) {
+    if (nextLoad===0) {
       console.log('There is one load with no jumpers, not adding a new one');
       return false;
     }
     else {
       console.log('Adding new load with loadnumber:' + nextLoad);
-    Loads.insert({
-      dropzone: dz,
-      aircraft: aircraft,
-      loadnumber: nextLoad,
-      createdBy: this.userId,
-      closed: false,
-      jumpers: [],
-      pilot: "mNQc66f42TYSboGLQ" // static for development purposes for now..
+      Loads.insert({
+        dropzone: dz,
+        aircraft: aircraft,
+        loadnumber: nextLoad,
+        createdBy: this.userId,
+        closed: false,
+        jumpers: [],
+        pilot: "mNQc66f42TYSboGLQ" // static for development purposes for now..
      });
     return true;
     }
@@ -68,7 +68,7 @@ Meteor.methods({
   reFuel: function (load,status) {
     currentRefuelState = Loads.findOne(load).refuel;
     console.log('Refuel state for load: ' + load + ' : ' + currentRefuelState);
-    if (currentRefuelState==true) {
+    if (currentRefuelState===true) {
       newRefuelState = false;
     } else {
       newRefuelState = true;
