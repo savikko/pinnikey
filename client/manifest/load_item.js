@@ -133,3 +133,5 @@ Template.loadItem.events({
         //Meteor.call
     }
 });
+
+    Mousetrap.bind('4', function() { console.log('4'); });
