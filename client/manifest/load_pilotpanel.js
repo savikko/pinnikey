@@ -40,11 +40,11 @@ function success(position) {
   Session.set('lon', position.coords.longitude);
   Session.set('alt', position.coords.altitude); 
   Session.set('speed', position.coords.speed);  
-};
+}
 
 function error(err) {
   console.warn('ERROR(' + err.code + '): ' + err.message);
-};
+}
 
 
 Meteor.setInterval(function() {
