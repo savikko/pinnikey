@@ -1,7 +1,10 @@
-var gtypeId = undefined;
+var gtypeId;
 var gtypeIdDep = new Deps.Dependency; // for optionMakes helper
 
-
+Template.modelEdit.rendered = function(){
+  gtypeId = undefined;
+  gtypeIdDep.changed();
+};
 
 Template.modelEdit.events({
 	'submit form': function(e) {
@@ -13,7 +16,7 @@ Template.modelEdit.events({
 
 	'change #gtype': function(e) {
 
-		gtypeId = AutoForm.getFieldValue('modelEdit', 'gtype');
+		gtypeId = AutoForm.getFieldValue('gtype', 'modelEdit');
 		gtypeIdDep.changed(); // generate change
 
 	}
@@ -45,16 +48,16 @@ Template.modelEdit.helpers({
 
   		gtypeIdDep.depend(); // cue on change
 
-
   		//If the gtypeId is undefined
   		if(!!!gtypeId) gtypeId = this.gtype;
 
-		var makes = GearTypes.findOne(gtypeId).makes;
+		  var makes = GearTypes.findOne(gtypeId).makes;
 
-		return makes.map(function (make){
+		  return makes.map(function (make){
+      
         	return { 
-        		label: Makes.findOne(make.id).name, 
-        		value: make.id 
+        		label: Makes.findOne(make).name, 
+        		value: make 
         	};
     	});
   	}

@@ -10,6 +10,7 @@ Template.mfrEdit.rendered = function(){
 	//the validation errors are shown on the next load of the template.
 	//Bug? Ficha? Annoying anyway!
 	AutoForm.validateForm('mfrEdit'); 
+	establishedDep.changed();
 };
 
 AutoForm.addHooks(['mfrEdit'], {
@@ -60,17 +61,17 @@ Template.mfrEdit.helpers({
 
 	established: function(){  // if true, the Terminated field is shown
 		establishedDep.depend();
-
-		return !!AutoForm.getFieldValue('mfrEdit', 'established');
+//console.log(AutoForm.getFieldValue('established', 'mfrEdit'));
+		return !!AutoForm.getFieldValue('established', 'mfrEdit');
 
 	},
 
 	terminated: function(){  // if true, the Successor field is shown
 		terminatedDep.depend();
-		var established = AutoForm.getFieldValue('mfrEdit', 'established');
+		var established = AutoForm.getFieldValue('established', 'mfrEdit');
 		if(!established) return false;//if it's not established, it's not terminated either -> do not show the successor field
 
-		return !!AutoForm.getFieldValue('mfrEdit', 'terminated');
+		return !!AutoForm.getFieldValue('terminated', 'mfrEdit');
 
 	},
 
