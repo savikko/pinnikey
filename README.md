@@ -23,7 +23,7 @@ Components:
 How to start developing?
 ==============
 
-First, install Meteor (https://www.meteor.com/install). Works on OS X and Linux. If running Windows, then first try to convert yourself to better OS and if you are not able to do that, read <http://win.meteor.com/>
+First, install Meteor (https://www.meteor.com/install). Supports OS X / Linux / Windows.
 
 If you are not familiar with Meteor, I recommend you to purchase and read Discover Meteor <https://www.discovermeteor.com/>.
 
