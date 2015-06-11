@@ -20,6 +20,21 @@ Template.newManifest.helpers({
   currentdz: function() {
   	return Dropzones.findOne(Meteor.user().profile.currentdz).name;
   },
+  lastloadempty: function() {
+    // Check if last load is there and if it's empty
+    console.log('searching..' + Meteor.user().profile.currentdz + aircraft._id );
+
+    lastLoad = Loads.findOne({dropzone: Meteor.user().profile.currentdz, "aircraft" : aircraft._id, date: {$gte: startofday}},{sort: {loadnumber: -1}});
+    console.log(lastLoad);
+    if (lastLoad) {
+      console.log('Found last load with id: ' + lastLoad._id);
+      //  Loads.findOne(lastLoad).
+      if (Loads.findOne(lastLoad._id).jumpers.length===0) {
+        return true
+        }
+      else { return false }
+    }
+  }
 });
 
 Template.newManifest.events({
