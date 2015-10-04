@@ -6,6 +6,14 @@
 	    <div class="panel-body">
 			<div class="btn-group-vertical col-md-12 col-xs-12">
 				<div class="input-group">
+				  <span class="input-group-addon"><i class="fa fa-location-arrow"></i></span>
+				  <input type="text" class="form-control" value="{{lat}}" disabled="disabled" style="text-align:right;">
+				</div>
+				<div class="input-group">
+				  <span class="input-group-addon"><i class="fa fa-location-arrow"></i></span>
+				  <input type="text" class="form-control" value="{{lon}}" disabled="disabled" style="text-align:right;">
+				</div>
+				<div class="input-group">
 				  <span class="input-group-addon"><i class="fa fa-dashboard"></i></span>
 				  <input type="text" class="form-control" value="{{speed}}" disabled="disabled" style="text-align:right;">
 				</div>
@@ -13,8 +21,9 @@
 				  <span class="input-group-addon"><i class="fa fa-cloud-download"></i></span>
 				  <input type="text" class="form-control" value="{{alt}}" disabled="disabled" style="text-align:right;">
 				</div>
+
 				<br>
-						
+				<button type="button" class="changePilotForTheLoad btn btn-default btn-success" id="userIsPilot-{{_id}}">{{#if userIsPilotOfTheLoad}}You are flying{{/if}}</button>
 				<button type="button" class="pilotstatuschange btn btn-default {{#if loadstatus "offBlock"}}btn-success{{/if}}" data-status="offBlock" id="offBlock-{{_id}}">Off block</button>
 				<button type="button" class="pilotstatuschange btn btn-default {{#if loadstatus "takeOff"}}btn-success{{/if}}" data-status="takeOff" id="takeOff-{{_id}}">Takeoff</button>
 				<!-- <button type="button" class="statuschange btn btn-default" data-status="jumpRunDrop" id="jumpRunDrop-{{_id}}">Drop</button> -->
@@ -23,5 +32,13 @@
 				<button type="button" class="pilotstatuschange btn btn-default {{#if loadstatus "onBlock"}}btn-success{{/if}}" data-status="onBlock" id="onBlock-{{_id}}">On block</button>
 			</div>
 		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading clearfix">
+	   	Map
+	  </div>
+	  <div class="panel-body">
+	   <div id="map" class="map"></div>
+	  </div>	    	
 	</div>
 </template>

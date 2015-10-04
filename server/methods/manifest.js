@@ -77,4 +77,9 @@ Meteor.methods({
     console.log('Refuel state for load: ' + load + ' changed to ' + newRefuelState);
     return true;
   },
+  pilotChange: function (load) {
+    console.log('Changing pilot for the load ' + load + '. New pilot: ' + this.userId);
+    Loads.update({_id: load},{$set: {pilot: this.userId}});
+    return true;
+  },
 });

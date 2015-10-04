@@ -2,17 +2,17 @@ Meteor.subscribe('dropzones');
 
 Meteor.subscribe('aircrafts');
 
-Meteor.subscribe('logbook');
+//Meteor.subscribe('logbook');
 
-Meteor.subscribe('rigs');
+//Meteor.subscribe('rigs');
 
-Meteor.subscribe('mfrs');
+//Meteor.subscribe('mfrs');
 
-Meteor.subscribe('makes');
+//Meteor.subscribe('makes');
 
-Meteor.subscribe('geartypes');
+//Meteor.subscribe('geartypes');
 
-Meteor.subscribe('models');
+//Meteor.subscribe('models');
 
 //Meteor.subscribe('users');
 

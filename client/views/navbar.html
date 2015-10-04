@@ -15,13 +15,13 @@
 
 {{#if currentUser}}
         <li>
-          <a href="{{pathFor 'newManifest'}}" role="button" aria-expanded="false">Manifest</a>
+          <a href="{{pathFor 'newManifest'}}" role="button" aria-expanded="false">{{_ "manifest"}}</a>
         </li>
         <li>
-          <a href="{{pathFor 'logBook'}}">Logbook</a>
+          <a href="{{pathFor 'logBook'}}">{{_ "logbook"}}</a>
         </li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gear<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{_ "gear"}}<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             {{#each rigs}}
                 <li><a href="{{pathFor 'rigPage'}}">{{make}} ({{model}})</a></li>
@@ -31,7 +31,7 @@
           </ul>
         </li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropzones<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{_ "dropzones"}}<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="{{pathFor 'dropzonesList'}}">All dropzones</a></li>
             <li class="divider"></li>
@@ -44,7 +44,7 @@
          </li>
 
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Aircrafts<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{_ "aircrafts"}}<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="{{pathFor 'aircraftsList'}}">All aircrafts</a></li>
             <li class="divider"></li>
