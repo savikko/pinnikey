@@ -17,19 +17,6 @@
         <li>
           <a href="{{pathFor 'newManifest'}}" role="button" aria-expanded="false">{{_ "manifest"}}</a>
         </li>
-        <li>
-          <a href="{{pathFor 'logBook'}}">{{_ "logbook"}}</a>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{_ "gear"}}<span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            {{#each rigs}}
-                <li><a href="{{pathFor 'rigPage'}}">{{make}} ({{model}})</a></li>
-            {{/each}}
-            <li class="divider"></li>
-            <li><a href="{{pathFor 'newRig'}}">Add rig</a></li>
-          </ul>
-        </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{_ "dropzones"}}<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
@@ -39,22 +26,7 @@
                 <li><a href="{{pathFor 'dropzonePage'}}">{{name}} ({{airfield}})</a></li>
             {{/each}}
             <li class="divider"></li>
-            <li><a href="{{pathFor 'newDropzone'}}">Add your own DZ</a></li>
-          </ul>
-         </li>
-
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{_ "aircrafts"}}<span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="{{pathFor 'aircraftsList'}}">All aircrafts</a></li>
-            <li class="divider"></li>
-            {{#each aircrafts}}
-                <li><a href="{{pathFor 'aircraftPage'}}">{{registration}} ({{make}} {{model}})</a></li>
-            {{/each}}
-  <!--  {{#if isInRole 'admin'}} -->
-                <li class="divider"></li>
-                <li><a href="{{pathFor 'newAircraft'}}">Add your aircraft</a></li>
-  <!--  {{/if}} -->
+            <li><a href="{{pathFor 'newDropzone'}}">{{_ "add_new_dropzone"}}</a></li>
           </ul>
          </li>
 {{/if}}

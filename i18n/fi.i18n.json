@@ -3,5 +3,6 @@
   "dropzones" : "Hyppypaikat",
   "manifest" : "Manifesti",
   "logbook": "Hyppypäiväkirja",
-  "gear": "Kamat"
+  "gear": "Kamat",
+  "add_new_dropzone": "Lisää uusi hyppypaikka"
 }

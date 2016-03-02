@@ -3,5 +3,6 @@
   "dropzones" : "Dropzones",
   "manifest" : "Manifest",
   "logbook": "Logbook",
-  "gear": "Gear"
+  "gear": "Gear",
+  "add_new_dropzone": "Add new dropzone"
 }
