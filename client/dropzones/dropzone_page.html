@@ -2,6 +2,23 @@
 	<div class="jumbotron">
 	  <h1>{{name}}</h1>
 	  <p>Hi! We are {{name}} and we are located at {{airfield}}.</p>
+	  {{#if requested}}
+	  	{{#if processed}}
+	  		{{#if okToManifest}}
+	  			<p>You are ok to manifest here.</p>
+	  		{{/if}}
+	  	{{else}}
+	  		<p><button class="btn btn-warning">Request sent</button></p>
+	  	{{/if}}
+	  {{else}}
+	  	<p><button id="applyToDropzone" class="btn btn-success">Apply to dropzone</button></p>
+	  {{/if}}
+
+	  {{#if manager}}
+	  	{{#each unProcessedPersons}}
+	  		<div>{{user.profile.firstName}} {{user.profile.lastName}} <button id="accept-{{userId}}" class="accept btn btn-success">Accept</button> | <button id="deny-{{userId}}" class="deny btn btn-danger">Deny</button></div>
+	  	{{/each}}
+	  {{/if}}
 	  <p>You can find more information about us at <a href={{website}}>{{website}}</a>.</p>
 	  {{#if gmapid}}
 		  <div class="panel panel-default"> 

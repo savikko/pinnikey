@@ -2,6 +2,8 @@ Meteor.subscribe('dropzones');
 
 Meteor.subscribe('aircrafts');
 
+Meteor.subscribe('persons');
+
 //Meteor.subscribe('logbook');
 
 //Meteor.subscribe('rigs');

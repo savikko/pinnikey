@@ -105,7 +105,12 @@
 		    	Empty load 
 			   	{{/if}}<br>
 		    {{#each jumpers}}
-		     {{jumper.profile.firstName}} {{jumper.profile.lastName}}: {{type}} @ {{altitude}} <br>
+		     {{#if okToJump ../dropzone jumper._id}}
+		     	<button class="btn btn-xs btn-success">{{jumper.profile.firstName}} {{jumper.profile.lastName}}: {{type}} @ {{altitude}}</button>
+		     {{else}}
+		     	<button class="btn btn-xs btn-danger">{{jumper.profile.firstName}} {{jumper.profile.lastName}}: {{type}} @ {{altitude}}</button>
+		     {{/if}}
+		      <br>
 		    {{/each}}
 	</div>
 </div>

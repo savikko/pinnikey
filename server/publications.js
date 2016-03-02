@@ -39,3 +39,19 @@ Meteor.publish('makes', function(){
 Meteor.publish('models', function(){
 	return Models.find();
 });
+
+Meteor.publish('persons', function(){
+  var currentUserId = this.userId;
+  return Persons.find({userId: currentUserId});
+});
+
+Meteor.publish('personsForManager', function(dropzone){
+  var currentUserId = this.userId;
+  if(Persons.findOne({"dropzone": dropzone, "userId": currentUserId}).manager === true) {
+    return Persons.find({"dropzone": dropzone});
+  }
+});
+
+Meteor.publish('personsForManifest', function(userIds) {
+  return Persons.find({userId: {$in: userIds}});
+});

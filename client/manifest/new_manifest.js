@@ -1,4 +1,8 @@
 Template.newManifest.helpers({
+  okToManifest: function() {
+    var dropzoneId = Meteor.user().profile.currentdz;
+    return Persons.findOne({"dropzone": dropzoneId}).okToManifest;
+  },
   aircrafts: function() {
     dzaircrafts = _.map(Dropzones.findOne(Meteor.user().profile.currentdz).aircrafts,function (value){ return value.id; });
   	aircrafts = Aircrafts.find({_id: {$in: dzaircrafts}});
@@ -43,3 +47,4 @@ Template.newManifest.events({
         return Meteor.call("addNewLoad", Meteor.user().profile.currentdz,this._id);
     }
 });
+

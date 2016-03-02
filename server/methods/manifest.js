@@ -1,31 +1,59 @@
 Meteor.methods({
+  applyToDropzone: function(dropzone) {
+    Persons.insert({
+        dropzone: dropzone,
+        userId: this.userId,
+        processed: false
+     });
+  },
+  acceptUserToManifest: function(personId) {
+    Persons.update({_id: personId},{$set: {processed: true, okToManifest: true}});
+  },
+  denyUserToManifest: function(personId) {
+    Persons.update({_id: personId},{$set: {processed: true, okToManifest: false}});
+  },
   getJumpPrice: function (aircraft, altitude) {
     if (!aircraft || !altitude) {  // return null if no parameters given
       return null;
     } else {
-      var aircraft = Aircrafts.findOne(aircraft);
-      var slotPrices = aircraft.slotPrices;
-      _.sortBy(slotPrices, 'altitude');
-      function search(altitude, slotPrices){
-      for (var i=0; i < slotPrices.length; i++) {
-          if (slotPrices[i].altitude >= altitude) {
-              return slotPrices[i];
-          }
-        }
-      }
-      var slotPrice = search(altitude, slotPrices);
-      console.log("Korkeuden " + altitude + " slottihinta on " + slotPrice.price + "EUR");
-
-      var jumpPrice = slotPrice.price;
+      var jumpPrice = jumpPriceCalculator(aircraft,altitude);
       return jumpPrice;
     }
   },
-  addSkydiverToLoad: function (load,altitude,type) {
-    user =  Meteor.users.findOne(this.userId);
+  isOkToManifest: function (userId,dropzone){
+    var userId =  this.userId;
+    var dropzoneObj = Dropzones.findOne({ 
+        _id: dropzone,
+        people: {
+                $elemMatch: {
+                    id: userId,
+                    okToManifest: true
+                    }
+                }
+        });
+    if (!dropzoneObj) {
+      console.log('not ok to manifest');
+      return false;
+    } else {
+      console.log('yes ok to manifest');
+      return true;
+    }
+  },
+  addSkydiverToLoad: function (load,aircraft,altitude,type) {
+    var user =  Meteor.users.findOne(this.userId);
+    var jumpPrice = jumpPriceCalculator(aircraft,altitude);
     console.log(load);
+    console.log(jumpPrice);
     Loads.update({
       _id: load},
-       {$push:{jumpers:{id: this.userId,weight: user.profile.weight,type: type,altitude: altitude,created_at: new Date()}}});
+       {$push:{jumpers:{
+          id: this.userId,
+          weight: user.profile.weight,
+          type: type,
+          price: jumpPrice,
+          altitude: altitude,
+          created_at: new Date()
+        }}});
     return true;
   },
   removeSkydiverFromLoad: function (load,jump) {

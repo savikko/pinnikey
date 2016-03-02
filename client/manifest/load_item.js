@@ -1,6 +1,9 @@
 Template.loadItem.helpers({
+  okToJump: function(dropzoneId, jumperId) {
+    var okToManifest = Persons.findOne({"userId": jumperId, "dropzone": dropzoneId}).okToManifest;
+    return okToManifest;
+  },
   jumpPrice: function() {
-    console.log(Session.get("jumpPrice-" + this._id));
     return Session.get("jumpPrice-" + this._id);
   },
   aircraft: function() {
@@ -131,6 +134,7 @@ Template.loadItem.events({
     'click #confirmJump': function(event) {
         event.stopPropagation();
         load = this._id; //load id
+        var aircraft = this.aircraft;
         var addJumpbutton = document.getElementById('addJump-' + this._id);
         var altitude = document.getElementById("altitude-" + this._id).options[document.getElementById("altitude-" + this._id).selectedIndex].value;
         var type = document.getElementById("type-" + this._id).options[document.getElementById("type-" + this._id).selectedIndex].value;
@@ -141,7 +145,7 @@ Template.loadItem.events({
               }
            else
               e.style.display = 'block';
-        return Meteor.call("addSkydiverToLoad", load, altitude, type);
+        return Meteor.call("addSkydiverToLoad", load, aircraft, altitude, type);
         //Meteor.call
     },
 
