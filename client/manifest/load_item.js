@@ -1,4 +1,8 @@
 Template.loadItem.helpers({
+  jumpPrice: function() {
+    console.log(Session.get("jumpPrice-" + this._id));
+    return Session.get("jumpPrice-" + this._id);
+  },
   aircraft: function() {
   	aircraft = Aircrafts.findOne({_id: this.aircraft});
 	return aircraft;
@@ -88,6 +92,14 @@ Template.loadItem.helpers({
 });
 
 Template.loadItem.events({
+    "change .altitude-dropdown": function(evt) {
+      var altitude = $(evt.target).val();
+      var load = this._id;
+      console.log('altitude: ' + altitude);
+      Meteor.call('getJumpPrice',this.aircraft,altitude, function (error,result) {
+        Session.set("jumpPrice-" + load, result);
+      });
+    },
     'click #cancelJump': function(event) {
         event.stopPropagation();
         load = this._id;
@@ -131,7 +143,8 @@ Template.loadItem.events({
               e.style.display = 'block';
         return Meteor.call("addSkydiverToLoad", load, altitude, type);
         //Meteor.call
-    }
+    },
+
 });
 
 Mousetrap.bind('M', function() { console.log('4'); });

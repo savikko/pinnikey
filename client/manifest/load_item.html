@@ -82,14 +82,18 @@
 				  <option value="CP">CP</option>
 				  <option value="CF">CF</option>
 				</select>
-				<select id="altitude-{{_id}}">
+				<select class="altitude-dropdown" id="altitude-{{_id}}">
 				  <option></option>
 				  <option value="1000">1000m</option>
 				  <option value="2000">2000m</option>
 				  <option value="3000">3000m</option>
 				  <option value="4000">4000m</option>
 				</select>
-				<button type="button" class="btn btn-success pull-right" id="confirmJump">Manifest</button>
+				<button type="button" class="btn btn-success pull-right" id="confirmJump">Add
+					{{#if jumpPrice}}
+						({{jumpPrice}}&euro;)
+					{{/if}}
+				</button> 
 		</form>
     </div>
   <!-- jump details section ends -->

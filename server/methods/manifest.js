@@ -1,4 +1,25 @@
 Meteor.methods({
+  getJumpPrice: function (aircraft, altitude) {
+    if (!aircraft || !altitude) {  // return null if no parameters given
+      return null;
+    } else {
+      var aircraft = Aircrafts.findOne(aircraft);
+      var slotPrices = aircraft.slotPrices;
+      _.sortBy(slotPrices, 'altitude');
+      function search(altitude, slotPrices){
+      for (var i=0; i < slotPrices.length; i++) {
+          if (slotPrices[i].altitude >= altitude) {
+              return slotPrices[i];
+          }
+        }
+      }
+      var slotPrice = search(altitude, slotPrices);
+      console.log("Korkeuden " + altitude + " slottihinta on " + slotPrice.price + "EUR");
+
+      var jumpPrice = slotPrice.price;
+      return jumpPrice;
+    }
+  },
   addSkydiverToLoad: function (load,altitude,type) {
     user =  Meteor.users.findOne(this.userId);
     console.log(load);
