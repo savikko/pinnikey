@@ -77,13 +77,13 @@ Template.loadItem.helpers({
   kilosleft: function(){
   	var weights = _.map(Loads.findOne(this._id).jumpers,function (value){ return value.weight; }); // get weights to array
   	var totalweight = _.reduce(weights, function(memo, num){ return memo + num; }, 0); // sum array of weights to one variable
-  	var usableweight = Aircrafts.findOne({_id: this.aircraft}).usableweight_forskydivers;
+  	var usableweight = Aircrafts.findOne({_id: this.aircraft}).usableWeightForSkydivers;
   	return usableweight-totalweight;
   },
   lightenough: function(){
   	var weights = _.map(Loads.findOne(this._id).jumpers,function (value){ return value.weight; }); // get weights to array
   	var totalweight = _.reduce(weights, function(memo, num){ return memo + num; }, 0); // sum array of weights to one variable
-  	var usableweight = Aircrafts.findOne({_id: this.aircraft}).usableweight_forskydivers;
+  	var usableweight = Aircrafts.findOne({_id: this.aircraft}).usableWeightForSkydivers;
   	var skydiverweight = Meteor.user().profile.weight;
   	if (usableweight-totalweight-skydiverweight>0) {
   		return true;
