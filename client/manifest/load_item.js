@@ -27,7 +27,7 @@ Template.loadItem.helpers({
     }
   },
   freeslots: function() {
-  	slotsavailable = Aircrafts.findOne({_id: this.aircraft}).maxjumpers;
+  	slotsavailable = Aircrafts.findOne({_id: this.aircraft}).maxJumpers;
   	if (Loads.findOne(this._id).jumpers.length) {
   		slotsused = Loads.findOne(this._id).jumpers.length;
   	}
@@ -44,7 +44,7 @@ Template.loadItem.helpers({
   	}
     },
   manifeststatus: function(id) {
-  	slotsavailable = Aircrafts.findOne({_id: this.aircraft}).maxjumpers;
+  	slotsavailable = Aircrafts.findOne({_id: this.aircraft}).maxJumpers;
   	if (Loads.findOne(this._id).jumpers.length) {
   		slotsused = Loads.findOne(this._id).jumpers.length;
   	}
