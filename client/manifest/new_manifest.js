@@ -9,14 +9,24 @@ Template.newManifest.helpers({
 	return aircrafts;
   },
   openloads: function(aircraft) {
-   dztz = Dropzones.findOne(Meteor.user().profile.currentdz).timezone;
-   startofday = new Date(moment().tz(dztz).startOf('day').toISOString());
-   return Loads.find({aircraft: aircraft, date: {$gte: startofday}, closed: false},{sort: {loadnumber: -1}});
+    dztz = Dropzones.findOne(Meteor.user().profile.currentdz).timezone;
+    startofday = new Date(moment().tz(dztz).startOf('day').toISOString());
+    const openloads = Loads.find({aircraft: aircraft, date: {$gte: startofday}, closed: false},{sort: {loadnumber: -1}});
+    if (openloads.count()>0) {
+      return openloads
+      } else {
+      return false
+    }
   },
   closedloads: function(aircraft) {
-   dztz = Dropzones.findOne(Meteor.user().profile.currentdz).timezone;
-   startofday = new Date(moment().tz(dztz).startOf('day').toISOString()); // find start of the day using dropzone's timezone
-   return Loads.find({aircraft: aircraft, date: {$gte: startofday}, closed: true},{sort: {loadnumber: -1}});
+    dztz = Dropzones.findOne(Meteor.user().profile.currentdz).timezone;
+    startofday = new Date(moment().tz(dztz).startOf('day').toISOString()); // find start of the day using dropzone's timezone
+    const closedloads = Loads.find({aircraft: aircraft, date: {$gte: startofday}, closed: true},{sort: {loadnumber: -1}});
+    if (closedloads.count()>0) {
+      return closedloads
+      } else {
+      return false
+    }
   },
   prettifyDate: function(timestamp) {
     return moment(new Date(timestamp)).format('DD.MM.YYYY');

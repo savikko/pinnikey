@@ -6,16 +6,19 @@
 				</div>
 				{{#each aircrafts}}
 					<div class="col-xs-12 col-md-6">
-					<h3>{{registration}} ({{make}}  {{model}} now at {{currentAltitude}}m with speed {{currentSpeed}})</h3>
+					<h3>{{registration}} ({{make}} {{model}})</h3>
 						<button type="button" class="btn btn-default {{#if lastloadempty}}disabled{{/if}}" id="addNewLoad">
 						Add new load {{registration}} ({{make}}
 						  {{model}})</button>
-						  	  <h4>Open loads</h4>
+						  	{{#if openloads}}
+						  		<h4>Open loads</h4>
+						  	{{/if}}
 								{{#each openloads _id}}
 									  	{{> loadItem}}
 								{{/each}}
-
+								{{#if closedloads}}
 						  	  <h4>Closed loads</h4>
+						  	{{/if}}
 								{{#each closedloads _id}}
 							  		{{> loadItem}}
 								{{/each}}
