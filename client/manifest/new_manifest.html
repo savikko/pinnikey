@@ -10,13 +10,13 @@
 						<button type="button" class="btn btn-default {{#if lastloadempty}}disabled{{/if}}" id="addNewLoad">
 						Add new load {{registration}} ({{make}}
 						  {{model}})</button>
-						  	{{#if openloads}}
+						  	{{#if openloads _id}}
 						  		<h4>Open loads</h4>
 						  	{{/if}}
 								{{#each openloads _id}}
 									  	{{> loadItem}}
 								{{/each}}
-								{{#if closedloads}}
+								{{#if closedloads _id}}
 						  	  <h4>Closed loads</h4>
 						  	{{/if}}
 								{{#each closedloads _id}}
