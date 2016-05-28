@@ -16,7 +16,10 @@
 
 	  {{#if manager}}
 	  	{{#each unProcessedPersons}}
-	  		<div>{{user.profile.firstName}} {{user.profile.lastName}} <button id="accept-{{userId}}" class="accept btn btn-success">Accept</button> | <button id="deny-{{userId}}" class="deny btn btn-danger">Deny</button></div>
+	  		<div>
+	  		<p><strong>{{user.username}}</strong> {{user.profile.firstName}} {{user.profile.lastName}} wants to jump here. Please accept or deny.</p>
+
+	  		<button id="accept-{{userId}}" class="accept btn btn-success">Accept</button> | <button id="deny-{{userId}}" class="deny btn btn-danger">Deny</button></div>
 	  	{{/each}}
 	  {{/if}}
 	  <p>You can find more information about us at <a href={{website}}>{{website}}</a>.</p>

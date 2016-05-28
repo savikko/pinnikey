@@ -69,7 +69,7 @@
         <h3 class="panel-title pull-left"><a href="{{pathFor 'loadPage'}}">
 	    Load {{loadnumber}} ({{aircraft.registration}} / {{aircraft.make}} {{aircraft.model}})</a></h3>
 	    <br>
-    	Still can carry {{kilosleft}} kg more.<br>Created {{createtime}}.
+    	Still can carry {{kilosleft}} kg more.
     </div>
 
   	<!-- jump details section -->
@@ -106,9 +106,9 @@
 			   	{{/if}}<br>
 		    {{#each jumpers}}
 		     {{#if okToJump ../dropzone jumper._id}}
-		     	<button class="btn btn-xs btn-success">{{jumper.profile.firstName}} {{jumper.profile.lastName}}: {{type}} @ {{altitude}}</button>
+		     	<button class="btn btn-xs btn-success">{{jumper.profile.firstName}} {{jumper.profile.lastName}} ({{jumper.username}}): {{type}} @ {{altitude}}</button>
 		     {{else}}
-		     	<button class="btn btn-xs btn-danger">{{jumper.profile.firstName}} {{jumper.profile.lastName}}: {{type}} @ {{altitude}}</button>
+		     	<button class="btn btn-xs btn-danger">{{jumper.profile.firstName}} {{jumper.profile.lastName}} ({{jumper.username}}): {{type}} @ {{altitude}}</button>
 		     {{/if}}
 		      <br>
 		    {{/each}}

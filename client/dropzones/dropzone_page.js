@@ -30,6 +30,7 @@ Template.dropzonePage.helpers({
   return Persons.find({"dropzone": this._id, processed: false});
  },
  user: function(userId) {
+  console.log('finding user document for ' + userId);
   return Meteor.users.findOne(this.userId);
  }
 });
