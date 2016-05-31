@@ -1,11 +1,16 @@
 <template name="dropzonePage">
 	<div class="jumbotron">
 	  <h1>{{name}}</h1>
-	  <p>Hi! We are {{name}} and we are located at {{airfield}}.</p>
+	  <p>We are {{name}} and we are located at {{airfield}}.</p>
 	  {{#if requested}}
 	  	{{#if processed}}
 	  		{{#if okToManifest}}
-	  			<p>You are ok to manifest here.</p>
+	  			<p><button class="btn btn-success">You are ok to manifest here.</button></p>
+	  			{{#if currentDz}}
+	  				<p>This is your current dropzone.</p>
+	  			{{else}}
+	  				<p><button class="btn btn-default" id="markAsCurrentDz">Mark this as your current dz</button></p>
+	  			{{/if}}
 	  		{{/if}}
 	  	{{else}}
 	  		<p><button class="btn btn-warning">Request sent</button></p>
@@ -62,8 +67,7 @@
 	  <div class="row">
 	   <h3>Managers:</h3>
 	   {{#each managers}}
-	   	 {{role}}: 
-	   	 {{> userItem}}
+	   	 	{{> userItem user=userId}}
 	   {{/each}}
 	   </div>
 

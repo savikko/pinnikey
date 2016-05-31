@@ -36,10 +36,8 @@ Template.newManifest.helpers({
   },
   lastloadempty: function() {
     // Check if last load is there and if it's empty
-    console.log('searching..' + Meteor.user().profile.currentdz + aircraft._id );
-
     lastLoad = Loads.findOne({dropzone: Meteor.user().profile.currentdz, "aircraft" : aircraft._id, date: {$gte: startofday}},{sort: {loadnumber: -1}});
-    console.log(lastLoad);
+    console.log("last load: ", lastLoad);
     if (lastLoad) {
       console.log('Found last load with id: ' + lastLoad._id);
       //  Loads.findOne(lastLoad).
